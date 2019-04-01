@@ -120,6 +120,8 @@ svg #fish6{
   }
 }
 
+
+/* water animation */
 #river {
 	position: relative;
 }
@@ -134,7 +136,7 @@ svg #fish6{
 	height: 650px;
 	animation: animate 15s linear infinite;
 }
-
+/* 
 @keyframes animate {
 	0% {
 		background-position: left 0px top 80px;
@@ -149,4 +151,4 @@ svg #fish6{
 	100% {
 		background-position: left 400px top -50px;
 	}
-}
+} */
