@@ -13,3 +13,5 @@ class Pond {
 		this.fish -= lostFish;
 	}
 }
+
+export {Pond}

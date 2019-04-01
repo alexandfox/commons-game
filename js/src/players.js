@@ -17,3 +17,5 @@ class Player {
 		this.wealth += fish;
 	}
 }
+
+export {Player}
