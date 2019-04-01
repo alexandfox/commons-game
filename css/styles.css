@@ -1,6 +1,6 @@
 /* setup */
 .modal {
-  /* display: none; Hidden by default */
+  display: block;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -14,11 +14,27 @@
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 8% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  height: 450px;
 }
+
+/* The Close Button */
+/* .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} */
 
 
 
@@ -29,5 +45,6 @@
 	background-position: center;
 	background-size: cover;
 	width: 100%;
+  margin: 10px auto;
 }
 
