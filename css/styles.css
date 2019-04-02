@@ -60,6 +60,26 @@
   margin: 10px auto;
 }
 
+#pondStatsParent {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#pondStats {
+  background-color: white;
+  height: 100px;
+  width: 200px;
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#dayTracker {
+
+}
+
 .playerContainer {
   height: 260px;
   width: 350px;

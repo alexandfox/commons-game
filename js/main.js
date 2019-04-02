@@ -105,7 +105,12 @@ function createPlayerStats(playerDiv) {
 
 	var displayWealth = document.createElement("div")
 	displayWealth.setAttribute("class", "wealthDisplay")
-	displayWealth.textContent = 0 + " coins"
+
+	var spanNum = document.createElement("span")
+	spanNum.textContent = "0"
+
+	displayWealth.appendChild(spanNum)
+	displayWealth.innerHTML += " coins"
 
 	playerDiv.appendChild(displayHealth)
 	playerDiv.appendChild(displayWealth)
@@ -187,20 +192,56 @@ var removeFishInputs = [];
 function firstDay() {
 	submitTurnBtns = document.querySelectorAll(".enterFish")
 	removeFishInputs = document.querySelectorAll(".numberOfFish")
-	console.log(submitTurnBtns)
+	newDay()
+}
 
+function newDay() {
+	nextTurn()
+}
+
+function nextTurn() {
 	submitTurnBtns.forEach( (submit, index) => {
-		submit.onclick = function() {
+		submit.onclick = function(event) {
 			let numFish = removeFishInputs[index].value
-			console.log(numFish)
-			console.log("hello")
 			commonPond.removeFish(numFish)
 			allPlayers[index].health = 1;			// should sep func, add in a check here
 			allPlayers[index].wealth = numFish - 1;
-			console.log(commonPond)
-			console.log(allPlayers)
+
+			hideTurnInput(event.currentTarget.parentNode)
+			updatePlayerStats(allPlayers[index])
 		}
 	})
+}
+
+function hideTurnInput(turnDiv) {
+	turnDiv.setAttribute("class", "playerTurn invisible")
+}
+
+function updatePlayerStats(player) {
+	displayPlayerHealth(player)
+	displayPlayerWealth(player)
+}
+
+// check player status
+function displayPlayerHealth(player) {
+	let playerHealth = document.querySelector(`#${player.identifier} .playerInfo .healthDisplay`)
+
+	if (player.health === 0) {
+		playerHealth.setAttribute("class", "healthDisplay hungry")
+		playerHealth.textContent = "hungry"
+	} else if (player.health === 1) {
+		playerHealth.setAttribute("class", "healthDisplay happy")
+		playerHealth.textContent = "happy"
+	} else {
+		playerHealth.setAttribute("class", "healthDisplay deceased")
+		playerHealth.textContent = "deceased"
+	}
+}
+
+function displayPlayerWealth(player) {
+	let playerWealth = document.querySelector(`#${player.identifier} .playerInfo .wealthDisplay span`)
+
+	playerWealth.textContent = player.wealth
 }
 
 
