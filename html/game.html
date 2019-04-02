@@ -16,24 +16,51 @@
 		<div id="player-modal" class="modal">
 			<div class="modal-content">
 				<div class="modal-body">
-					<div class="playerName">
-						<label for="playerName" class="userInput">Player 1: </label>
-						<input type="text" class="userName" id="player1" placeholder="Name" >
+					<div id="selectNumberPlayers" class="">
+						<h2 class="modalHeading">select number of players</h2>
+						<label class="radio-inline humanPlayers"><input type="radio" name="optradio" id="one-player" checked>1</label>
+						<label class="radio-inline humanPlayers"><input type="radio" name="optradio" id="two-players">2</label>
+						<label class="radio-inline humanPlayers"><input type="radio" name="optradio" id="three-players">3</label>
+						<label class="radio-inline humanPlayers"><input type="radio" name="optradio" id="four-players">4</label>
 					</div>
-					<div class="playerAvatar">
-						<input type="image" id="avi1" src="../img/avi1-02.png" alt="player-avatar" class="avatarImage">
-						<input type="image" id="avi2" src="../img/avi3-02.png" alt="player-avatar" class="avatarImage">
-						<input type="image" id="avi3" src="../img/avi2-02.png" alt="player-avatar" class="avatarImage">
-						<input type="image" id="avi4" src="../img/avi4-02.png" alt="player-avatar" class="avatarImage">
+					<div class="playerSetup invisible">
+						<div class="playerName">
+							<h2 class="modalHeading">New Player</h2>
+							<label for="playerName" class="userInput">Name: </label>
+							<input type="text" id="new-player-name" placeholder="Name" >
+						</div>
+						<div class="playerAvatar">
+							<input type="image" id="avi1" src="../img/avi1-02.png" alt="player-avatar" class="avatarImage">
+							<input type="image" id="avi2" src="../img/avi3-02.png" alt="player-avatar" class="avatarImage">
+							<input type="image" id="avi3" src="../img/avi2-02.png" alt="player-avatar" class="avatarImage">
+							<input type="image" id="avi4" src="../img/avi4-02.png" alt="player-avatar" class="avatarImage">
+						</div>
 					</div>
+					<!-- <div id="confirm-setup">
+						<h2 class="modalHeading">Ready to Play?</h2>
+						<span class="numberOfPlayers">Number of Players: </span>
+					</div> -->
 				</div>
 				<div class="modal-footer">
-        <button type="button" class="btn btn-prev">Prev</button>
-        <button type="button" class="btn btn-next">Next</button>
+        <button type="button" class="btn btn-prev" id="setup-prev">Prev</button>
+        <button type="button" class="btn btn-next" id="setup-next">Next</button>
+				<button type="button" class="btn btn-close invisible" id="finish-setup">Finish</button>
 			</div>
 		</div>
 	</div>
 	<div id="animation-container">
+		<!-- <div id="player-2" class=playerContainer>
+			<div class="avatarDisplay"></div>
+			<div class="nameDisplay"></div>
+			<div class="healthDisplay"></div>
+			<div class="wealthDisplay"></div>
+		</div>
+		<div id="player-3" class=playerContainer>
+			<div class="avatarDisplay"></div>
+			<div class="nameDisplay"></div>
+			<div class="healthDisplay"></div>
+			<div class="wealthDisplay"></div>
+		</div> -->
 		<div id="river">
 			<div id="water">
 				<div id=river-border></div>

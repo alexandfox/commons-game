@@ -7,7 +7,8 @@ const avatars = [
 
 // players class
 class Player {
-	constructor(name) {
+	constructor(identifier) {
+		this.identifier = identifier;
 		this.name = name;
 		this.avatar = avatars[0];
 		this.wealth = 0;
