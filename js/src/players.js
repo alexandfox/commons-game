@@ -21,8 +21,9 @@ class Player {
 		this.fish -= 1
 	}
 
-	sellFish(fish) {
-		this.wealth += fish;
+	sellFish() {
+		this.wealth += this.fish;
+		this.fish = 0;
 	}
 }
 

@@ -10,10 +10,17 @@ const setupNextButton = document.getElementById("setup-next")
 const selectPlayersScreen = document.getElementById("selectNumberPlayers")
 const setupPlayerScreen = document.querySelector(".playerSetup")
 
+// Pond
+const pondFishCount = document.getElementById("fishCount")
+
+
 // Game Setup
 // Set number of human players
 var numbHumanPlayers = 1;
 const allPlayers = []
+
+const testPlay = new Player("player6");
+console.log(testPlay)
 
 const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
 selectHumanPlayers.forEach( option => {
@@ -27,26 +34,25 @@ const avatar_options = document.querySelectorAll(".avatarImage")
 
 // Player Inputs
 var newPlayerSetup = document.querySelector(".playerSetup")
-var newPlayer = new Player(null)
-
+var newPlayer = null;
 const newPlayer_input = document.getElementById("new-player-name")	
-newPlayer_input.oninput = function() {		// set player name
-	newPlayer.name = newPlayer_input.value;
-}
-
-avatar_options.forEach( option => {
-	option.onclick = function() {
-		newPlayer.avatar = option.src
-	}
-})
-
-function setNewPlayer(id) {
-	newPlayer.identifier = id;
-}
 
 function pushNewPlayer() {
-	var playerClone = Object.assign({}, newPlayer)
-	allPlayers.push(playerClone)
+	allPlayers.push(newPlayer)
+}
+
+function createNewPlayer(identifier) {
+	newPlayer = new Player(identifier)
+
+	newPlayer_input.oninput = function() {		// set player name
+		newPlayer.name = newPlayer_input.value;
+	}
+
+	avatar_options.forEach( option => {
+		option.onclick = function() {
+			newPlayer.avatar = option.src
+		}
+	})
 }
 
 
@@ -57,10 +63,10 @@ setupNextButton.onclick = function() {
 		setupPlayerScreen.setAttribute("class", "playerSetup")
 		setupPlayerScreen.setAttribute("id", "player0")
 
-		setNewPlayer("player0")		
+		createNewPlayer("player0")		
 	} else if (numbHumanPlayers > 1) {
 		pushNewPlayer()
-		setNewPlayer("player1")
+		createNewPlayer("player1")
 
 		newPlayer_input.value = ""
 		setupPlayerScreen.setAttribute("id", "player1")
@@ -80,6 +86,7 @@ finishSetup.onclick = function() {
 		createPlayerHTML(player.identifier, index)
 	})
 	
+	console.log(allPlayers)
 	firstDay();
 	playerModal.style.display = "none";
 }
@@ -182,8 +189,7 @@ function createPlayerHTML(playerNum, index) {
 
 
 // create DOM for new pond
-const commonPond = new Pond(10)  // change this to a dynamic input**
-
+const pond = new Pond(10)  // change this to a dynamic input**
 
 var submitTurnBtns = [];
 var removeFishInputs = [];
@@ -192,6 +198,7 @@ var removeFishInputs = [];
 function firstDay() {
 	submitTurnBtns = document.querySelectorAll(".enterFish")
 	removeFishInputs = document.querySelectorAll(".numberOfFish")
+	updateFishDisplay()
 	newDay()
 }
 
@@ -203,15 +210,32 @@ function nextTurn() {
 	submitTurnBtns.forEach( (submit, index) => {
 		submit.onclick = function(event) {
 			let numFish = removeFishInputs[index].value
-			commonPond.removeFish(numFish)
-			allPlayers[index].health = 1;			// should sep func, add in a check here
-			allPlayers[index].wealth = numFish - 1;
+			let player = allPlayers[index]
 
+			console.log(player)
+			eachTurnPlayer(player, numFish)
+			eachTurnPond(numFish)
 			hideTurnInput(event.currentTarget.parentNode)
-			updatePlayerStats(allPlayers[index])
 		}
 	})
 }
+
+function eachTurnPlayer(player, fish) {			// updates for player each turn
+	player.fish = fish
+	player.eatFish()
+	player.sellFish()
+	updatePlayerStats(player)
+}
+
+function eachTurnPond(lostFish) {			// updates for pond each turn
+	pond.removeFish(lostFish)
+	updateFishDisplay()
+}
+
+function updateFishDisplay() {
+	pondFishCount.textContent = pond.fish
+}
+
 
 function hideTurnInput(turnDiv) {
 	turnDiv.setAttribute("class", "playerTurn invisible")
