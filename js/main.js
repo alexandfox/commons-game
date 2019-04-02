@@ -52,7 +52,6 @@ function pushNewPlayer() {
 }
 
 
-
 // check next Button
 setupNextButton.onclick = function() {
 	if (selectPlayersScreen.getAttribute("class") != "invisible") {
@@ -80,7 +79,7 @@ const finishSetup = document.getElementById("finish-setup")
 finishSetup.onclick = function() {
 	pushNewPlayer()
 	allPlayers.forEach( (player, index) => {		// check for all players
-		addPlayerDetails(player.identifier, index)
+		createPlayerHTML(player.identifier, index)
 	})
 	
 	playerModal.style.display = "none";
@@ -91,12 +90,12 @@ finishSetup.onclick = function() {
 
 
 // Modal close on click
-// window.onclick = function(event) {
-//   if (event.target == playerModal) {
-//     playerModal.style.display = "none";
-// 		console.log(playerModal)
-//   }
-// }
+window.onclick = function(event) {
+  if (event.target == playerModal) {
+    playerModal.style.display = "none";
+		console.log(playerModal)
+  }
+}
 
 
 
@@ -123,9 +122,39 @@ function createPlayerContainer(playerNum) {
 	return playerDiv;
 }
 
-function addPlayerDetails(playerNum, index) {				
-	const playerDiv = createPlayerContainer(playerNum)
+function createPlayerInfoDiv(playerContainer) {
+	const playerInfo = document.createElement("div")
+	playerInfo.setAttribute("class", "playerInfo")
 
+	playerContainer.appendChild(playerInfo)
+	return playerInfo
+} 
+
+function createPlayerTurnDiv(playerContainer) {
+	const playerTurn = document.createElement("div")
+	playerTurn.setAttribute("class","playerTurn")
+
+	var promptText = document.createElement("p")
+	promptText.textContent = "how many fish will you take today?"
+
+	var numberInput = document.createElement("input")
+	numberInput.setAttribute("type", "text")
+	numberInput.setAttribute("class", "numberOfFish")
+
+	var enterFishBtn = document.createElement("input")
+	enterFishBtn.setAttribute("type", "button")
+	enterFishBtn.setAttribute("class", "enterFish")
+	enterFishBtn.setAttribute("value", "Enter")
+
+	playerTurn.appendChild(promptText)
+	playerTurn.appendChild(numberInput)
+	playerTurn.appendChild(enterFishBtn)
+
+	playerContainer.appendChild(playerTurn)
+	return playerTurn
+}
+
+function addPlayerDetails(playerInfo, index) {				
 	var displayName = document.createElement("div")
 	displayName.setAttribute("class", "nameDisplay")
 	displayName.textContent = allPlayers[index].name
@@ -134,11 +163,22 @@ function addPlayerDetails(playerNum, index) {
 	displayAvatar.setAttribute("class", "avatarDisplay")
 	displayAvatar.setAttribute("src", allPlayers[index].avatar )
 
-	playerDiv.appendChild(displayAvatar)
-	playerDiv.appendChild(displayName)
+	playerInfo.appendChild(displayAvatar)
+	playerInfo.appendChild(displayName)
 
-	createPlayerStats(playerDiv)
+	createPlayerStats(playerInfo)
+}
+
+function createPlayerHTML(playerNum, index) {
+	const playerDiv = createPlayerContainer(playerNum)
+	const playerInfo = createPlayerInfoDiv(playerDiv)
+	
+	createPlayerTurnDiv(playerDiv)
+	addPlayerDetails(playerInfo, index)
 }
 
 
+// Player Moves
+
+// const submitTurnBtn = 
 

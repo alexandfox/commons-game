@@ -61,10 +61,28 @@
 }
 
 .playerContainer {
-  height: 250px;
-  width: 200px;
+  height: 260px;
+  width: 350px;
+  position: relative;
+}
+
+.playerInfo {
+  height: 220px;
+  width: 160px;
   background-color: white;
   border: 2px black;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.playerTurn {
+  width: 250px;
+  height: 80px;
+  background-color: white;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
 }
 
 #player0 {
@@ -76,6 +94,12 @@
 #player1 {
   position: absolute;
   bottom: 15%;
+  right: 10%;
+}
+
+#player2 {
+  position: absolute;
+  top: 15%;
   right: 10%;
 }
 
