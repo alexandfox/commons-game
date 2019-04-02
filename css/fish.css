@@ -45,6 +45,23 @@ svg #fish6 {
   animation: bounce 2s infinite;
 }
 
+svg #fish11,
+svg #fish12,
+svg #fish13,
+svg #fish14,
+svg #fish15,
+svg #fish16 {
+  fill:#528484;
+  -moz-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  -webkit-transform: translateY(20px);
+  transform: translateY(-20px);
+  -moz-transform: translateX(-20px);
+  -ms-transform: translateX(-20px);
+  -webkit-transform: translateX(20px);
+  transform: translateX(-20px);
+}
+
 svg #fish2{
 	animation-delay: 0.5s;
 	-webkit-animation-delay: 0.5s;

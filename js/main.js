@@ -32,8 +32,6 @@ var newPlayer = new Player(null)
 const newPlayer_input = document.getElementById("new-player-name")	
 newPlayer_input.oninput = function() {		// set player name
 	newPlayer.name = newPlayer_input.value;
-	console.log(newPlayer)
-	console.log(allPlayers)
 }
 
 avatar_options.forEach( option => {
@@ -82,6 +80,7 @@ finishSetup.onclick = function() {
 		createPlayerHTML(player.identifier, index)
 	})
 	
+	firstDay();
 	playerModal.style.display = "none";
 }
 
@@ -93,7 +92,6 @@ finishSetup.onclick = function() {
 window.onclick = function(event) {
   if (event.target == playerModal) {
     playerModal.style.display = "none";
-		console.log(playerModal)
   }
 }
 
@@ -141,10 +139,9 @@ function createPlayerTurnDiv(playerContainer) {
 	numberInput.setAttribute("type", "text")
 	numberInput.setAttribute("class", "numberOfFish")
 
-	var enterFishBtn = document.createElement("input")
-	enterFishBtn.setAttribute("type", "button")
-	enterFishBtn.setAttribute("class", "enterFish")
-	enterFishBtn.setAttribute("value", "Enter")
+	var enterFishBtn = document.createElement("button")
+	enterFishBtn.setAttribute("class", "btn enterFish")
+	enterFishBtn.textContent = "Enter"
 
 	playerTurn.appendChild(promptText)
 	playerTurn.appendChild(numberInput)
@@ -178,7 +175,39 @@ function createPlayerHTML(playerNum, index) {
 }
 
 
+
+// create DOM for new pond
+const commonPond = new Pond(10)  // change this to a dynamic input**
+
+
+var submitTurnBtns = [];
+var removeFishInputs = [];
+
+// sets a new day
+function firstDay() {
+	submitTurnBtns = document.querySelectorAll(".enterFish")
+	removeFishInputs = document.querySelectorAll(".numberOfFish")
+	console.log(submitTurnBtns)
+
+	submitTurnBtns.forEach( (submit, index) => {
+		submit.onclick = function() {
+			let numFish = removeFishInputs[index].value
+			console.log(numFish)
+			console.log("hello")
+			commonPond.removeFish(numFish)
+			allPlayers[index].health = 1;			// should sep func, add in a check here
+			allPlayers[index].wealth = numFish - 1;
+			console.log(commonPond)
+			console.log(allPlayers)
+		}
+	})
+}
+
+
+// 
+
+
 // Player Moves
 
-// const submitTurnBtn = 
+
 
