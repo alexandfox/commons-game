@@ -1,8 +1,15 @@
+const avatars = [
+	"../img/avi1-02.png",
+	"../img/avi3-02.png",
+	"../img/avi2-02.png",
+	"../img/avi4-02.png"
+]
+
 // players class
 class Player {
-	constructor(name, avatar) {
+	constructor(name) {
 		this.name = name;
-		this.avatar = avatar;
+		this.avatar = avatars[0];
 		this.wealth = 0;
 		this.health = 0;
 		this.fish = 0;
@@ -18,4 +25,4 @@ class Player {
 	}
 }
 
-export {Player}
+export default Player

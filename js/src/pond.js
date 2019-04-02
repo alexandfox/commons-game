@@ -14,4 +14,4 @@ class Pond {
 	}
 }
 
-export {Pond}
+export default Pond
