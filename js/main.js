@@ -1,4 +1,4 @@
-import Player from "./src/players.js"
+import Player from "./src/player.js"
 import Pond from "./src/pond.js"
 import createPlayerHTML from "./src/create-elements.js"
 
@@ -102,23 +102,53 @@ window.onclick = function(event) {
 
 // create DOM for new pond
 const pond = new Pond(10)  // change this to a dynamic input**
+
+const gameTime = 7;
 var currentDay = 0;
 
 var submitTurnBtns = [];
 var removeFishInputs = [];
+
+//
+function startGame() {
+
+}
+
 
 // sets a new day
 function firstDay() {
 	submitTurnBtns = document.querySelectorAll(".enterFish")
 	removeFishInputs = document.querySelectorAll(".numberOfFish")
 	updateFishDisplay()
-	newDay()
-}
-
-function newDay() {
 	updateDay()
 	nextTurn()
 }
+
+function livingPlayers() {		// how many living players right now?
+	const healthyPlayers = allPlayers.filter( player => player.health > 0
+	)
+	console.log(healthyPlayers);
+	return healthyPlayers;
+}
+
+function countLivingPlayers() {
+	var stillLiving = livingPlayers();
+	return stillLiving.length
+}
+
+function nextDay() {
+	if ((currentDay < gameTime +1) && (countLivingPlayers() > 0) ) {
+		updateDay()
+		nextTurn()
+	} else {
+		endGame()
+	}
+}
+
+function eachDay() {
+	
+}
+
 
 function nextTurn() {
 	submitTurnBtns.forEach( (submit, index) => {
@@ -159,6 +189,20 @@ function updateDay() {
 function endGame() {
 	// day 7
 	console.log("game over")
+
+	if (currentDay == gameTime) {
+		endComplete()
+	} else {
+		endEarly()
+	}
+}
+
+function endComplete() {
+
+}
+
+function endEarly() {
+
 }
 
 
