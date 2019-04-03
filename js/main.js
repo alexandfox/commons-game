@@ -1,6 +1,7 @@
 import Player from "./src/player.js"
 import Pond from "./src/pond.js"
 import createPlayerHTML from "./src/create-elements.js"
+import updatePlayerStats from "./src/update-display.js"
 
 // Global objects
 var playerModal = document.getElementById("player-modal")
@@ -52,7 +53,6 @@ function createNewPlayer(identifier) {
 	})
 }
 
-
 // check next Button
 setupNextButton.onclick = function() {
 	if (selectPlayersScreen.getAttribute("class") != "invisible") {
@@ -73,7 +73,6 @@ setupNextButton.onclick = function() {
 	} 
 }
 
-
 // Finish
 const finishSetup = document.getElementById("finish-setup")
 
@@ -83,13 +82,10 @@ finishSetup.onclick = function() {
 		createPlayerHTML(player.identifier, index)
 	})
 	
-	console.log(allPlayers)
-	firstDay();
+	console.log("finishSetup, allPlayers: " + allPlayers)
 	playerModal.style.display = "none";
+	firstDay();
 }
-
-
-// Determine setup screens
 
 
 // Modal close on click
@@ -116,52 +112,88 @@ function startGame() {
 
 
 // sets a new day
+var healthyPlayers = [];
+var turnSetting = "sim"			// default turn setting
+
 function firstDay() {
 	submitTurnBtns = document.querySelectorAll(".enterFish")
 	removeFishInputs = document.querySelectorAll(".numberOfFish")
+	
 	updateFishDisplay()
 	updateDay()
-	nextTurn()
+	// nextTurn()
+	eachDay()
 }
 
-function livingPlayers() {		// how many living players right now?
-	const healthyPlayers = allPlayers.filter( player => player.health > 0
+function eachDay() {
+	if (turnSetting === "seq") {
+
+	}
+	else {
+		nextTurn()
+		nextDay()
+	}
+}
+
+function setPlayerInputEvents() {
+	
+}
+
+function nextTurn() {
+	var count = 0;
+	var sumFish = 0;
+
+	if (count === healthyPlayers.length) {
+		updatePond(sumFish);
+	}
+	submitTurnBtns.forEach( (submit, index) => {
+		submit.onclick = function(event) {
+			var numFish = Number(removeFishInputs[index].value)
+			let player = allPlayers[index]
+			sumFish += numFish;
+			count ++
+
+			console.log("listening loop numFish" + numFish)
+			console.log("listening loop sumFish" + sumFish)
+			eachTurnPlayer(player, numFish)
+			// updatePond(numFish)
+			hideTurnInput(event.currentTarget.parentNode)
+		}
+	})
+}
+
+
+function updateLivingPlayers() {		// how many living players right now?
+	healthyPlayers = allPlayers.filter( player => player.health > -1
 	)
 	console.log(healthyPlayers);
 	return healthyPlayers;
 }
 
 function countLivingPlayers() {
-	var stillLiving = livingPlayers();
+	var stillLiving = updateLivingPlayers();
 	return stillLiving.length
 }
 
 function nextDay() {
 	if ((currentDay < gameTime +1) && (countLivingPlayers() > 0) ) {
 		updateDay()
-		nextTurn()
+		console.log("here i am at nextDay")
+		// nextTurn()
 	} else {
 		endGame()
 	}
 }
 
-function eachDay() {
-	
-}
-
-
-function nextTurn() {
-	submitTurnBtns.forEach( (submit, index) => {
-		submit.onclick = function(event) {
-			let numFish = removeFishInputs[index].value
-			let player = allPlayers[index]
-
-			console.log(player)
-			eachTurnPlayer(player, numFish)
-			eachTurnPond(numFish)
-			hideTurnInput(event.currentTarget.parentNode)
-		}
-	})
+// returns a new array of randomly shuffled order of players
+function randomPlayerOrder(players) {
+	for (let i = players.length - 1; i > 0; i--) {
+		let j = Math.floor(Math.random() * (i + 1));
+		let temp = players[i];
+		players[i] = players[j];
+		players[j] = temp;
+	}
+	return players;
 }
 
 function eachTurnPlayer(player, fish) {			// updates for player each turn
@@ -169,10 +201,9 @@ function eachTurnPlayer(player, fish) {			// updates for player each turn
 	player.eatFish()
 	player.sellFish()
 	updatePlayerStats(player)
-	console.log(allPlayers)
 }
 
-function eachTurnPond(lostFish) {			// updates for pond each turn
+function updatePond(lostFish) {			// updates for pond each turn
 	pond.removeFish(lostFish)
 	updateFishDisplay()
 }
@@ -186,6 +217,10 @@ function updateDay() {
 	dayTracker.textContent = currentDay
 }
 
+function hideTurnInput(turnDiv) {
+	turnDiv.setAttribute("class", "playerTurn invisible")
+}
+
 function endGame() {
 	// day 7
 	console.log("game over")
@@ -197,6 +232,9 @@ function endGame() {
 	}
 }
 
+
+
+
 function endComplete() {
 
 }
@@ -205,43 +243,6 @@ function endEarly() {
 
 }
 
-
-function hideTurnInput(turnDiv) {
-	turnDiv.setAttribute("class", "playerTurn invisible")
-}
-
-function updatePlayerStats(player) {
-	displayPlayerHealth(player)
-	displayPlayerWealth(player)
-}
-
-// check player status
-function displayPlayerHealth(player) {
-	let playerHealth = document.querySelector(`#${player.identifier} .playerInfo .healthDisplay`)
-
-	if (player.health === 0) {
-		playerHealth.setAttribute("class", "healthDisplay hungry")
-		playerHealth.textContent = "hungry"
-	} else if (player.health === 1) {
-		playerHealth.setAttribute("class", "healthDisplay happy")
-		playerHealth.textContent = "happy"
-	} else {
-		playerHealth.setAttribute("class", "healthDisplay deceased")
-		playerHealth.textContent = "deceased"
-	}
-}
-
-function displayPlayerWealth(player) {
-	let playerWealth = document.querySelector(`#${player.identifier} .playerInfo .wealthDisplay span`)
-
-	playerWealth.textContent = player.wealth
-}
-
-
-// 
-
-
-// Player Moves
 
 
 export default allPlayers
