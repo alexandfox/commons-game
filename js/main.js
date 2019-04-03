@@ -1,9 +1,9 @@
 import Player from "./src/players.js"
 import Pond from "./src/pond.js"
+import createPlayerHTML from "./src/create-elements.js"
 
 // Global objects
 var playerModal = document.getElementById("player-modal")
-const animationContainer = document.getElementById("animation-container")
 
 //modal
 const setupNextButton = document.getElementById("setup-next")
@@ -12,15 +12,13 @@ const setupPlayerScreen = document.querySelector(".playerSetup")
 
 // Pond
 const pondFishCount = document.getElementById("fishCount")
+const dayTracker = document.getElementById("dayTracker")
 
 
 // Game Setup
 // Set number of human players
 var numbHumanPlayers = 1;
 const allPlayers = []
-
-const testPlay = new Player("player6");
-console.log(testPlay)
 
 const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
 selectHumanPlayers.forEach( option => {
@@ -33,7 +31,6 @@ selectHumanPlayers.forEach( option => {
 const avatar_options = document.querySelectorAll(".avatarImage")
 
 // Player Inputs
-var newPlayerSetup = document.querySelector(".playerSetup")
 var newPlayer = null;
 const newPlayer_input = document.getElementById("new-player-name")	
 
@@ -103,93 +100,9 @@ window.onclick = function(event) {
 }
 
 
-
-// Create HTML rendering of new players
-function createPlayerStats(playerDiv) {
-	var displayHealth = document.createElement("div")
-	displayHealth.setAttribute("class", "healthDisplay hungry")
-	displayHealth.textContent = "hungry"
-
-	var displayWealth = document.createElement("div")
-	displayWealth.setAttribute("class", "wealthDisplay")
-
-	var spanNum = document.createElement("span")
-	spanNum.textContent = "0"
-
-	displayWealth.appendChild(spanNum)
-	displayWealth.innerHTML += " coins"
-
-	playerDiv.appendChild(displayHealth)
-	playerDiv.appendChild(displayWealth)
-}
-
-function createPlayerContainer(playerNum) {
-	const playerDiv = document.createElement("div")
-	playerDiv.setAttribute("class", "playerContainer")
-	playerDiv.setAttribute("id", playerNum)
-	animationContainer.appendChild(playerDiv)
-
-	return playerDiv;
-}
-
-function createPlayerInfoDiv(playerContainer) {
-	const playerInfo = document.createElement("div")
-	playerInfo.setAttribute("class", "playerInfo")
-
-	playerContainer.appendChild(playerInfo)
-	return playerInfo
-} 
-
-function createPlayerTurnDiv(playerContainer) {
-	const playerTurn = document.createElement("div")
-	playerTurn.setAttribute("class","playerTurn")
-
-	var promptText = document.createElement("p")
-	promptText.textContent = "how many fish will you take today?"
-
-	var numberInput = document.createElement("input")
-	numberInput.setAttribute("type", "text")
-	numberInput.setAttribute("class", "numberOfFish")
-
-	var enterFishBtn = document.createElement("button")
-	enterFishBtn.setAttribute("class", "btn enterFish")
-	enterFishBtn.textContent = "Enter"
-
-	playerTurn.appendChild(promptText)
-	playerTurn.appendChild(numberInput)
-	playerTurn.appendChild(enterFishBtn)
-
-	playerContainer.appendChild(playerTurn)
-	return playerTurn
-}
-
-function addPlayerDetails(playerInfo, index) {				
-	var displayName = document.createElement("div")
-	displayName.setAttribute("class", "nameDisplay")
-	displayName.textContent = allPlayers[index].name
-
-	var displayAvatar = document.createElement("img")
-	displayAvatar.setAttribute("class", "avatarDisplay")
-	displayAvatar.setAttribute("src", allPlayers[index].avatar )
-
-	playerInfo.appendChild(displayAvatar)
-	playerInfo.appendChild(displayName)
-
-	createPlayerStats(playerInfo)
-}
-
-function createPlayerHTML(playerNum, index) {
-	const playerDiv = createPlayerContainer(playerNum)
-	const playerInfo = createPlayerInfoDiv(playerDiv)
-	
-	createPlayerTurnDiv(playerDiv)
-	addPlayerDetails(playerInfo, index)
-}
-
-
-
 // create DOM for new pond
 const pond = new Pond(10)  // change this to a dynamic input**
+var currentDay = 0;
 
 var submitTurnBtns = [];
 var removeFishInputs = [];
@@ -203,6 +116,7 @@ function firstDay() {
 }
 
 function newDay() {
+	updateDay()
 	nextTurn()
 }
 
@@ -225,6 +139,7 @@ function eachTurnPlayer(player, fish) {			// updates for player each turn
 	player.eatFish()
 	player.sellFish()
 	updatePlayerStats(player)
+	console.log(allPlayers)
 }
 
 function eachTurnPond(lostFish) {			// updates for pond each turn
@@ -234,6 +149,16 @@ function eachTurnPond(lostFish) {			// updates for pond each turn
 
 function updateFishDisplay() {
 	pondFishCount.textContent = pond.fish
+}
+
+function updateDay() {
+	currentDay += 1
+	dayTracker.textContent = currentDay
+}
+
+function endGame() {
+	// day 7
+	console.log("game over")
 }
 
 
@@ -275,4 +200,4 @@ function displayPlayerWealth(player) {
 // Player Moves
 
 
-
+export default allPlayers
