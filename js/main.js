@@ -131,7 +131,7 @@ function eachDay() {
 	}
 	else {
 		nextTurn()
-		nextDay()
+		//allTurns(nextDay)
 	}
 }
 
@@ -139,28 +139,35 @@ function setPlayerInputEvents() {
 	
 }
 
-function nextTurn() {
-	var count = 0;
-	var sumFish = 0;
-
-	if (count === healthyPlayers.length) {
-		updatePond(sumFish);
+function allTurns(callback) {
+	while (turnCount < healthyPlayers.length) {
+		console.log(turnCount)
 	}
+	callback()
+}
+
+function nextTurn() {
 	submitTurnBtns.forEach( (submit, index) => {
 		submit.onclick = function(event) {
 			var numFish = Number(removeFishInputs[index].value)
 			let player = allPlayers[index]
-			sumFish += numFish;
-			count ++
+			daysFish += numFish;
+			turnCount ++
 
 			console.log("listening loop numFish" + numFish)
-			console.log("listening loop sumFish" + sumFish)
+			console.log("listening loop sumFish" + daysFish)
+			console.log("daysFish: " + daysFish)
+			console.log("turnCount: " + turnCount)
+			console.log(healthyPlayers)
 			eachTurnPlayer(player, numFish)
 			// updatePond(numFish)
 			hideTurnInput(event.currentTarget.parentNode)
 		}
 	})
 }
+
+var daysFish = 0;
+var turnCount = 0;  // counts the number of turns made each day
 
 
 function updateLivingPlayers() {		// how many living players right now?

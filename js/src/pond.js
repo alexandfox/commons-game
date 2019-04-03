@@ -1,8 +1,8 @@
 // pond object
 class Pond {
-	constructor(fish) {
+	constructor(fish, ratio) {
 		this.fish = fish;
-		this.reproduce = 1.5;
+		this.reproduce = ratio || 1.5;
 	}
 
 	popGrowth() {
