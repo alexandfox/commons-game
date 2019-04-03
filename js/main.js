@@ -1,8 +1,15 @@
-import Player from "./src/player.js"
-import Pond from "./src/pond.js"
-import createPlayerHTML from "./src/create-elements.js"
-import updatePlayerStats from "./src/update-display.js"
+// import Player from "./src/player.js"
+// import Pond from "./src/pond.js"
+// import createPlayerHTML from "./src/create-elements.js"
+// import updatePlayerStats from "./src/update-display.js"
+import Game from "./src/game.js"
 
+const g = new Game();
+g.setup();
+
+
+
+/* 
 // Global objects
 var playerModal = document.getElementById("player-modal")
 
@@ -253,3 +260,4 @@ function endEarly() {
 
 
 export default allPlayers
+ */
