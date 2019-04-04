@@ -1,6 +1,7 @@
 // import Player from "./src/player.js"
 // import Pond from "./src/pond.js"
 import Game from "./src/game.js"
+// import Modal from "../node_modules/modal-js/dist/modal.js"
 
 // const gamePage = document.getElementById("menu-game")
 
