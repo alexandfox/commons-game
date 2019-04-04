@@ -68,14 +68,18 @@ export default class Game {
 			console.log("day delayer")
 
 			this.checkGameStatus().then( daysLeft => {
+				this.daysLeft--
 				this.currentDay++
 				this.pond.popGrowth();
-				// this.dom.updateGameDisplay(this.currentDay, this.pond.fish)
+				this.dom.updateGameDisplay(this.currentDay, this.pond.fish)
 				console.log("its a new day");
 
 				if (daysLeft) {
 					turn = 0;
 					turnDelayer()
+				} else {
+					console.log("in the delayer")
+					this.endGame();
 				}
 			});
 		}
@@ -93,56 +97,26 @@ export default class Game {
 
 	checkGameStatus() {
 		return new Promise((resolve, reject) => {
+			this.removeLostPlayers()
 			if (this.daysLeft && (this.activePlayers.length > 0) ) {
 				resolve(this.daysLeft)
 			} else {
-				endGame()
+				console.log("in the promise")
+				this.endGame();
 			}
     });
 	}
 
-  endOfDay() {
-    // this.daysLeft--;
-    // this.currentDay++;
 
-    // console.log("total fishes today: ", daysFish);
-    console.log("current pond's state", this.pond);
-    console.log("all: ", this.allPlayers);
-    console.log("active: ", this.activePlayers);
-
-    if (this.daysLeft) {
-			this.pond.popGrowth();
-			this.eachDay();
-		} else {
-      this.endGame();
-    }
-  }
-
-  startNewDay() {
-    // this.activePlayers.forEach((player, index) => {
-    //   if (player.health < 0) {
-    //     this.activePlayers.splice(index, 1);
-    //   } else player.sleep();
-    // });
-		console.log("it's a new day! Pond population: ", this.pond.fish)
-    this.eachDay();
+  removeLostPlayers() {
+    this.activePlayers.forEach((player, index) => {
+      if (player.health < 0) {
+        this.activePlayers.splice(index, 1);
+      } else player.sleep();
+    });
   }
 
   endGame() {
     alert("end of the game !!!");
   }
 }
-
-function makeAPromise() {
-  return new Promise((resolve, reject) => {
-    if (true) {
-      resolve(console.log("yay"));
-    } else {
-      reject(console.log("nay"));
-    }
-  });
-}
-
-makeAPromise()
-  .then(res => {})
-  .catch(err => {});
