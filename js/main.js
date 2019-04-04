@@ -38,6 +38,9 @@ finishSetup.onclick = function() {
 const playerModal = document.getElementById("player-modal")
 const avatar_options = document.querySelectorAll(".avatarImage")
 
+const endModal = document.getElementById("game-recap")
+const endModalExit = document.getElementById("end-close")
+
 	// avatar_options.forEach( option => {
 	// 	option.onclick = function() {
 	// 		newPlayer.avatar = option.src
@@ -47,9 +50,13 @@ const avatar_options = document.querySelectorAll(".avatarImage")
 
 // Modal close on click
 window.onclick = function(event) {
-  if (event.target == playerModal) {
-    playerModal.style.display = "none";
+  if (event.target == endModal) {
+    endModal.style.display = "none";
   }
+}
+
+endModalExit.onclick = function(event) {
+  endModal.style.display = "none";
 }
 
 /*

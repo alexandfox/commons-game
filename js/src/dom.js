@@ -6,6 +6,8 @@ const setupNextButton = document.getElementById("setup-next");
 const selectPlayersScreen = document.getElementById("selectNumberPlayers");
 const setupPlayerScreen = document.querySelector(".playerSetup");
 
+const endModal = document.getElementById("game-recap")
+
 // gameboard
 const playerIconDisplay = document.getElementById("all-players");
 const playerLeaderboard = document.getElementById("leaderboard-players");
@@ -144,4 +146,9 @@ export default class DOM {
     pondFishCount.textContent = fish;
     dayTracker.textContent = day;
   }
+
+	showEndGameStats() {
+		endModal.setAttribute("class", "modal")
+	}
+
 }

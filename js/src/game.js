@@ -139,6 +139,6 @@ export default class Game {
   }
 
   endGame() {
-    alert("end of the game !!!");
+    this.dom.showEndGameStats();
   }
 }
