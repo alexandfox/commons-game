@@ -40,7 +40,7 @@ svg #fish3,
 svg #fish4,
 svg #fish5,
 svg #fish6 {
-	fill:#528484;
+	fill:#39587F;
   -moz-animation: bounce 2s infinite;
   -webkit-animation: bounce 2s infinite;
   animation: bounce 2s infinite;
@@ -52,7 +52,7 @@ svg #fish13,
 svg #fish14,
 svg #fish15,
 svg #fish16 {
-  fill:#528484;
+  fill:#39587F;
   -moz-transform: translateY(-20px);
   -ms-transform: translateY(-20px);
   -webkit-transform: translateY(20px);

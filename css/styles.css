@@ -1,4 +1,8 @@
 /* setup */
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .modal {
   display: block;
   position: fixed; /* Stay in place */
@@ -93,7 +97,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   height: 450px;
   width: 200px;
   position: absolute;
@@ -116,9 +120,8 @@ h3 {
 } */
 
 
-.playerTurn {
+#player-input {
   box-sizing: border-box;
-  width: 320px;
   position: absolute;
   bottom: 0px;
   left: 30%;
@@ -137,10 +140,42 @@ h3 {
 #player-turn-input {
   box-sizing: inherit;
   background-color: #99AFCC;
+  border: 1.5px solid #39587F;
   padding: 10px;
   display: flex;
   justify-content: space-between;
 }
+
+#leaderboard {
+  width: 200px;
+  position: absolute;
+  right: 50px;
+  top: 65px;
+}
+
+#leaderboard-text {
+  padding: 0 10px;
+}
+
+#leaderboard-players {
+  border: 1.5px solid #39587F;
+  padding: 2px 10px;
+  /* background-color: #39587F; */
+  background-color: #99AFCC;
+  width: 100%;
+}
+
+.moneyBagIcon {
+  height: 20pt;
+}
+
+.playerstats {
+  height: 40px;
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
 
 #player0 {
   /* position: absolute;
