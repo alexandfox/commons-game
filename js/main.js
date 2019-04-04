@@ -4,11 +4,41 @@ import Game from "./src/game.js"
 
 // const gamePage = document.getElementById("menu-game")
 
-// gamePage.onclick = function() {
-// 	const g = new Game();
-// 	g.setup();
-// }
+// Global objects
+const playerModal = document.getElementById("player-modal")
+const avatar_options = document.querySelectorAll(".avatarImage")
 
+const endModal = document.getElementById("game-recap")
+const endModalExit = document.getElementById("end-close")
+
+const hamburgerIcon = document.getElementById("hamburger-menu")
+const rulesModal = document.getElementById("rules-modal")
+
+
+$(document).ready(function(){
+  var show_btn=$("#hamburger-menu");
+  var show_btn=$("#hamburger-menu");
+  
+    show_btn.click(function(){
+      $('#rules-modal').modal('show');
+  })
+});
+
+// show game Rules modal
+hamburgerIcon.onclick = function(event) {
+	console.log("click!")
+	rulesModal.setAttribute("class", "modal fade")
+}
+
+$(function() {
+	$('#hamburger-menu').on('click', function( e ) {
+			Custombox.open({
+					target: '#rules-modal',
+					effect: 'fadein'
+			});
+			e.preventDefault();
+	});
+});
 
 // Finish
 const finishSetup = document.getElementById("finish-setup")
@@ -32,14 +62,6 @@ finishSetup.onclick = function() {
 	const g = new Game(numbHumanPlayers, playerNames);
 	g.setup();
 }
-
-
-// Global objects
-const playerModal = document.getElementById("player-modal")
-const avatar_options = document.querySelectorAll(".avatarImage")
-
-const endModal = document.getElementById("game-recap")
-const endModalExit = document.getElementById("end-close")
 
 	// avatar_options.forEach( option => {
 	// 	option.onclick = function() {

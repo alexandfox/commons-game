@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="../css/styles.css">
 	<link rel="stylesheet" href="../css/fish.css">
 	<script type="module" src="../js/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<title>commons- play</title>
 </head>
 <body>
@@ -50,8 +52,26 @@
 					<button type="button" class="btn btn-close" id="finish-setup">Start Game</button>
 				</div>
 		</div>
+		<div id="rules-modal" class="modal fade hidden">
+			<div class="modal-dialog">
+				<div class="modal-header">
+					<div class="modal-title">Rules</div>
+					<div class="close" id="end-close">x</div>
+				</div>
+				<div class="modal-body">
+					<h4 class="modalHeading"></h4>
+				</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div id="animation-container">
+		<div id="hamburger-menu" data-toggle="modal" data-target="#rules-modal">
+			<a href="#rules-modal" rel="modal:open"></a>
+			<div class="hamburgerIcon"></div>
+			<div class="hamburgerIcon"></div>
+			<div class="hamburgerIcon"></div>
+		</div>
 		<div id="pondStatsParent">
 			<div id="pondStats">
 				<h3>Day: <span id="dayTracker"></span></h3>

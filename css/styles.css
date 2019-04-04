@@ -1,8 +1,69 @@
-/* setup */
 * {
   font-family: 'Montserrat', sans-serif;
 }
 
+/* main page */
+#main-background {
+  background-color: #BFDBFF;
+	height: 650px;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#main-title {
+  /* position: absolute;
+  top: 25%;
+  left: 35%; */
+  display: flex;
+  justify-content: space-around;
+}
+
+#title {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 60px;
+}
+
+.river {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+#fish-container {
+  width: 235px;
+	height: 104px;
+}
+
+#menu-box {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+#main-menu {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+}
+
+.mainMenuItem {
+  list-style: none;
+  padding: 30px;
+}
+
+.mainMenuItem a, .mainMenuItem p {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+
+/* setup */
 .modal {
   display: block;
   position: fixed; /* Stay in place */
@@ -65,11 +126,22 @@
   cursor: pointer;
 }
 
-
-
 /* game environment */
+#hamburger-menu {
+  position: absolute;
+  top: 35px;
+  left: 65px;
+}
+
+.hamburgerIcon {
+  width: 35px;
+  height: 4px;
+  background-color: #39587F;
+  margin: 6px 0;
+}
+
+
 #animation-container {
-	/* background-image: url("../img/background.jpg"); */
   background-color: #BFDBFF;
 	height: 650px;
 	background-position: center;
@@ -114,7 +186,7 @@ h3 {
   height: 450px;
   width: 200px;
   position: absolute;
-  top: 65px;
+  top: 80px;
   left: 65px;
   /* border: 2px solid black; */
 }
@@ -167,7 +239,7 @@ h3 {
   flex-direction: column;
   position: absolute;
   right: 50px;
-  top: 65px;
+  top: 80px;
 }
 
 #leaderboard {
@@ -272,10 +344,6 @@ h3 {
 /* .nameDisplay {
   font-size: 16px;
 } */
-
-.river {
-  position: fixed;
-}
 
 .modal-title {
   font-size: 22px;
