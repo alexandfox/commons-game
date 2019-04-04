@@ -31,7 +31,7 @@ export default class Game {
 
 		this.activePlayers = this.allPlayers.filter( player => player.health > -1
 		)
-		eachDay()
+		this.eachDay()
 	}
 
 	eachDay() {
@@ -43,19 +43,18 @@ export default class Game {
       //   let count = Number(player.catchFishes());
       daysFish += turnFish;
     });
-		endOfDay()
+		this.endOfDay()
 	}
 
 	endOfDay() {
     this.daysLeft--;
     this.currentDay++;
-    console.log("total fishes today: ", daysFish);
+    // console.log("total fishes today: ", daysFish);
     console.log("current pond's state", this.pond);
 
     if (this.daysLeft) this.startNewDay();
     else {
 			this.endGame()
-			alert("end of the game !!!");
 		}
 	}
 
@@ -72,6 +71,7 @@ export default class Game {
 	}
 
 	endGame() {
+		alert("end of the game !!!");
 	}
 }
 

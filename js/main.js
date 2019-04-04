@@ -4,12 +4,12 @@
 // import updatePlayerStats from "./src/update-display.js"
 import Game from "./src/game.js"
 
-const g = new Game();
-g.setup();
+// const g = new Game();
+// g.setup();
 
 
 
-/* 
+ 
 // Global objects
 var playerModal = document.getElementById("player-modal")
 
@@ -22,7 +22,7 @@ const setupPlayerScreen = document.querySelector(".playerSetup")
 const pondFishCount = document.getElementById("fishCount")
 const dayTracker = document.getElementById("dayTracker")
 
-
+/* 
 // Game Setup
 // Set number of human players
 var numbHumanPlayers = 1;
@@ -59,7 +59,7 @@ function createNewPlayer(identifier) {
 		}
 	})
 }
-
+ */
 // check next Button
 setupNextButton.onclick = function() {
 	if (selectPlayersScreen.getAttribute("class") != "invisible") {
@@ -102,7 +102,7 @@ window.onclick = function(event) {
   }
 }
 
-
+/*
 // create DOM for new pond
 const pond = new Pond(10)  // change this to a dynamic input**
 

@@ -3,7 +3,7 @@ svg#fish {
 }
 /* Fish Animation */
 svg.fish{
-  overflow:visible;
+  overflow: visible;
 }
 
 /* @-webkit-keyframes swim
@@ -24,7 +24,8 @@ svg.fish{
 	width: 235px;
 	height: 104px;
 	margin-left: 40%;
-	position: absolute;	
+  margin-top: 12%;
+	position: fixed;	
 	animation: swim 20s;
 	-webkit-animation: swim 20s;
 	animation-iteration-count: infinite;

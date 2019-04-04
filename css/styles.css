@@ -52,12 +52,14 @@
 
 /* game environment */
 #animation-container {
-	background-image: url("../img/background.jpg");
+	/* background-image: url("../img/background.jpg"); */
+  background-color: #BFDBFF;
 	height: 650px;
 	background-position: center;
 	background-size: cover;
 	width: 100%;
   margin: 10px auto;
+  position: relative;
 }
 
 #pondStatsParent {
@@ -67,7 +69,7 @@
 }
 
 #pondStats {
-  background-color: white;
+  /* background-color: white; */
   height: 100px;
   width: 200px;
   margin: 20px 0 0 0;
@@ -77,57 +79,96 @@
   flex-flow: column;
 }
 
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+}
+
 #dayTracker {
 
 }
 
-.playerContainer {
-  height: 260px;
-  width: 350px;
-  position: relative;
+#all-players {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 450px;
+  width: 200px;
+  position: absolute;
+  top: 65px;
+  left: 65px;
+  /* border: 2px solid black; */
 }
 
-.playerInfo {
-  height: 220px;
-  width: 160px;
-  background-color: white;
-  border: 2px black;
+.playerContainer {
+  flex: 1;
+}
+
+/* .playerInfo {
+  height: 150px;
+  width: 100%;
+  border: 2px solid black;
   position: absolute;
   top: 0px;
   left: 0px;
-}
+} */
+
 
 .playerTurn {
-  width: 250px;
-  height: 80px;
-  background-color: white;
+  box-sizing: border-box;
+  width: 320px;
   position: absolute;
   bottom: 0px;
-  right: 0px;
+  left: 30%;
+}
+
+#player-turn-text, #turn-name-display {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+#turn-name-display {
+  color: #FFE34A;
+}
+
+#player-turn-input {
+  box-sizing: inherit;
+  background-color: #99AFCC;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #player0 {
-  position: absolute;
+  /* position: absolute;
   top: 15%;
-  left: 10%;
+  left: 10%; */
 }
 
 #player1 {
-  position: absolute;
+  /* position: absolute;
   bottom: 15%;
-  right: 10%;
+  right: 10%; */
 }
 
 #player2 {
-  position: absolute;
+  /* position: absolute;
   top: 15%;
-  right: 10%;
+  right: 10%; */
 }
 
 .avatarDisplay {
-  width: 150px;
+  height: 95px;
+  margin: 15px auto;
 }
 
-.nameDisplay {
+/* .nameDisplay {
   font-size: 16px;
+} */
+
+.river {
+  position: fixed;
 }
