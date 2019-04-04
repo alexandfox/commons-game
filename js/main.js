@@ -4,40 +4,40 @@
 // import updatePlayerStats from "./src/update-display.js"
 import Game from "./src/game.js"
 
-const gamePage = document.getElementById("menu-game")
+// const gamePage = document.getElementById("menu-game")
+
+// gamePage.onclick = function() {
+// 	const g = new Game();
+// 	g.setup();
+// }
 
 const g = new Game();
 g.setup();
 
 
 
- /* 
 // Global objects
-var playerModal = document.getElementById("player-modal")
-
-//modal
+const playerModal = document.getElementById("player-modal")
 const setupNextButton = document.getElementById("setup-next")
 const selectPlayersScreen = document.getElementById("selectNumberPlayers")
-const setupPlayerScreen = document.querySelector(".playerSetup")
+const setupPlayerScreen = document.querySelector("#playerSetup")
 
-// Pond
-const pondFishCount = document.getElementById("fishCount")
-const dayTracker = document.getElementById("dayTracker")
- */
+// // Pond
+// const pondFishCount = document.getElementById("fishCount")
+// const dayTracker = document.getElementById("dayTracker")
 
-/* 
 // Game Setup
 // Set number of human players
-var numbHumanPlayers = 1;
-const allPlayers = []
+// var numbHumanPlayers = 1;
+// const allPlayers = []
 
-const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
-selectHumanPlayers.forEach( option => {
-	option.onclick = function() {
-		numbHumanPlayers = Number(option.textContent)
-		console.log(numbHumanPlayers)
-	}
-})
+// const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
+// selectHumanPlayers.forEach( option => {
+// 	option.onclick = function() {
+// 		numbHumanPlayers = Number(option.textContent)
+// 		console.log(numbHumanPlayers)
+// 	}
+// })
 
 const avatar_options = document.querySelectorAll(".avatarImage")
 
@@ -62,40 +62,21 @@ function createNewPlayer(identifier) {
 		}
 	})
 }
- */
-/* 
-// check next Button
-setupNextButton.onclick = function() {
-	if (selectPlayersScreen.getAttribute("class") != "invisible") {
-		selectPlayersScreen.setAttribute("class", "invisible")
-		setupPlayerScreen.setAttribute("class", "playerSetup")
-		setupPlayerScreen.setAttribute("id", "player0")
-
-		createNewPlayer("player0")		
-	} else if (numbHumanPlayers > 1) {
-		pushNewPlayer()
-		createNewPlayer("player1")
-
-		newPlayer_input.value = ""
-		setupPlayerScreen.setAttribute("id", "player1")
-	
-		setupNextButton.setAttribute("class","invisible")
-		finishSetup.setAttribute("class", "btn btn-close")
-	} 
-}
 
 // Finish
 const finishSetup = document.getElementById("finish-setup")
 
 finishSetup.onclick = function() {
-	pushNewPlayer()
-	allPlayers.forEach( (player, index) => {		// check for all players
-		createPlayerHTML(player.identifier, index)
-	})
+	// pushNewPlayer()
+	// allPlayers.forEach( (player, index) => {		// check for all players
+	// 	createPlayerHTML(player.identifier, index)
+	// })
+
+	
 	
 	console.log("finishSetup, allPlayers: " + allPlayers)
 	playerModal.style.display = "none";
-	firstDay();
+	// firstDay();
 }
 
 
@@ -105,7 +86,7 @@ window.onclick = function(event) {
     playerModal.style.display = "none";
   }
 }
- */
+
 /*
 // create DOM for new pond
 const pond = new Pond(10)  // change this to a dynamic input**
@@ -249,19 +230,26 @@ function endGame() {
 		endEarly()
 	}
 }
-
-
-
-
-function endComplete() {
-
-}
-
-function endEarly() {
-
-}
-
-
+*/
 
 export default allPlayers
- */
+
+// check next Button
+/* setupNextButton.onclick = function() {
+	if (selectPlayersScreen.getAttribute("class") != "invisible") {
+		selectPlayersScreen.setAttribute("class", "invisible")
+		setupPlayerScreen.setAttribute("class", "playerSetup")
+		setupPlayerScreen.setAttribute("id", "player0")
+
+		createNewPlayer("player0")		
+	} else if (numbHumanPlayers > 1) {
+		pushNewPlayer()
+		createNewPlayer("player1")
+
+		newPlayer_input.value = ""
+		setupPlayerScreen.setAttribute("id", "player1")
+	
+		setupNextButton.setAttribute("class","invisible")
+		finishSetup.setAttribute("class", "btn btn-close")
+	} 
+} */

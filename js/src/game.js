@@ -17,24 +17,33 @@ export default class Game {
 	}
 
 	setup() {
-		this.daysLeft = Number(this.dom.setDayCount());
-		this.numPlayers = Number(this.dom.setHumanPlayers());
+		// this.daysLeft = Number(this.dom.setDayCount());
+		var humanPlayers = Number(this.dom.setHumanPlayers());
+		// var machinePlayers = Number(this.dom.setMachinePlayers());
+		this.numPlayers = humanPlayers //+ machinePlayers
 	
 		var count = this.numPlayers;
 
     while (count > 0) {
-      this.allPlayers.push(
-        new Player(this.dom.setPlayerName(), this.allPlayers.length)
-      );
+			var newPlayer = new Player(this.dom.setPlayerName(), this.allPlayers.length)
+      this.allPlayers.push(newPlayer);
+
+			console.log(newPlayer)
+			console.log(this.allPlayers)
+
+			console.log("name and index: ", newPlayer.name, newPlayer.index)
+			console.log(this.allPlayers)
+
+			this.dom.createPlayerHTML(newPlayer.name, newPlayer.index)
       count--;
     }
 
 		this.activePlayers = this.allPlayers.filter( player => player.health > -1
 		)
-		this.eachDay()
+		// this.eachDay()
 	}
 
-	eachDay() {
+/* 	eachDay() {
     var daysFish = 0;			//simultaneous order
     this.activePlayers.forEach( player => {
       let turnFish = Number(this.dom.playerTakeFish(player.name, this.currentDay));
@@ -72,6 +81,6 @@ export default class Game {
 
 	endGame() {
 		alert("end of the game !!!");
-	}
+	} */
 }
 

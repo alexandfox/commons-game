@@ -14,7 +14,7 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .modal-content {
@@ -24,6 +24,17 @@
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
   height: 450px;
+}
+
+.modalHeading {
+  font-size: 22px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  padding: 0 0 15px 0;
+}
+
+.radio-inline {
+  padding: 0 20px 20px 0;
 }
 
 .playerAvatar {
@@ -168,9 +179,10 @@ h3 {
 
 .moneyBagIcon {
   height: 20pt;
+  margin: 0 0 0 2px;
 }
 
-.playerstats {
+.playerStats {
   height: 40px;
   padding: 5px 0;
   display: flex;
