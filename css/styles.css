@@ -170,15 +170,22 @@ h3 {
   justify-content: space-between;
 }
 
-#leaderboard {
-  width: 200px;
+#listPlayers {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   right: 50px;
   top: 65px;
 }
 
+#leaderboard {
+  width: 250px;
+  display: flex;
+}
+
 #leaderboard-text {
-  padding: 0 10px;
+  padding: 0 50px;
+  margin: 0 0 5px 0;
 }
 
 #leaderboard-players {
@@ -186,7 +193,28 @@ h3 {
   padding: 2px 10px;
   /* background-color: #39587F; */
   background-color: #99AFCC;
-  width: 100%;
+  width: 200px;
+}
+
+#turn-arrows {
+  padding: 2px 0 0 0;
+  display: flex;
+  flex-flow: column;
+}
+
+.arrowRight {
+  margin: 10.2px 15px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 0; 
+  height: 0; 
+  border-top: 10.2px solid transparent;
+  border-bottom: 10.2px solid transparent;
+  border-left: 10.2px solid #737373;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .moneyBagIcon {
@@ -204,6 +232,11 @@ h3 {
 
 .statsName {
   padding: 3px 0 0 0;
+  font-size: 16px;
+}
+
+.playerWealthDisplay {
+  font-size: 16px;
 }
 
 .deceased .statsName,
