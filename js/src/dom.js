@@ -90,6 +90,12 @@ export default class DOM {
     });
   }
 
+	updateLostPlayerDisplay(player) {
+		var rowID = player.identifier + "-stats"
+		var lostRow = document.getElementById(rowID)
+		lostRow.setAttribute("class", "playerStats deceased")
+	}
+
 	updateTurnSelection(maxFish) {
 		this.clearTurnSelection()
 
@@ -109,7 +115,7 @@ export default class DOM {
 		var wealthID = player.identifier + "-wealth"
 		var playerWealthDisplay = document.getElementById(wealthID)
 
-		playerWealthDisplay.textContent = player.wealth;
+		playerWealthDisplay.textContent = String(player.wealth);
 	}
 
   updateGameDisplay(day, fish) {

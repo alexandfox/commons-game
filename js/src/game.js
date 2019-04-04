@@ -10,7 +10,7 @@ export default class Game {
     this.playerNames = namesArray;
     this.allPlayers = [];
     this.activePlayers = [];
-    this.pond = new Pond(7);
+    this.pond = null;
     this.daysLeft = 7;
     this.currentDay = 0;
     this.dom = new DOM();
@@ -19,6 +19,9 @@ export default class Game {
   setup() {
     this.createPlayerObjects(this.playerNames);
     this.activePlayers = this.allPlayers.filter(player => player.health > -1);
+
+		if (this.allPlayers < 4) this.pond = new Pond(7)
+		else this.pond = new Pond(8)
 
     // this.daysLeft = Number(this.dom.setDayCount());
     // var machinePlayers = Number(this.dom.setMachinePlayers());
@@ -89,9 +92,7 @@ export default class Game {
 
     // let turnFish = Number();
     // player.catchFish(turnFish);
-    
-
-    //   let count = Number(player.catchFishes());
+    // let count = Number(player.catchFishes());
     // daysFish += turnFish;
     // });
 
@@ -113,6 +114,7 @@ export default class Game {
 		console.log("removing lost players.")
     this.activePlayers.forEach((player, index) => {
       if (player.health < 0) {
+				this.dom.updateLostPlayerDisplay(player)
         this.activePlayers.splice(index, 1);
       } else player.sleep();
     });

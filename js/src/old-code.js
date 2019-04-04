@@ -1,4 +1,30 @@
-import allPlayers from "../main.js"
+const setupNextButton = document.getElementById("setup-next")
+const selectPlayersScreen = document.getElementById("selectNumberPlayers")
+const setupPlayerScreen = document.querySelector("#playerSetup")
+
+
+// check next Button
+/* setupNextButton.onclick = function() {
+	if (selectPlayersScreen.getAttribute("class") != "invisible") {
+		selectPlayersScreen.setAttribute("class", "invisible")
+		setupPlayerScreen.setAttribute("class", "playerSetup")
+		setupPlayerScreen.setAttribute("id", "player0")
+
+		createNewPlayer("player0")		
+	} else if (numbHumanPlayers > 1) {
+		pushNewPlayer()
+		createNewPlayer("player1")
+
+		newPlayer_input.value = ""
+		setupPlayerScreen.setAttribute("id", "player1")
+	
+		setupNextButton.setAttribute("class","invisible")
+		finishSetup.setAttribute("class", "btn btn-close")
+	} 
+} */
+
+/*
+// import allPlayers from "../main.js"
 
 const animationContainer = document.getElementById("animation-container")
 
@@ -85,5 +111,6 @@ function createPlayerTurnDiv(playerContainer) {
 	return playerTurn
 }
 
-export default createPlayerHTML
+// export default createPlayerHTML
 
+*/

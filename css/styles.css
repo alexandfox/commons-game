@@ -27,7 +27,7 @@
 }
 
 .modalHeading {
-  font-size: 22px;
+  font-size: 18px;
   text-decoration: underline;
   text-transform: uppercase;
   padding: 0 0 15px 0;
@@ -156,7 +156,9 @@ h3 {
 }
 
 #turn-name-display {
-  color: #FFE34A;
+  border: 2px solid #FFE34A;
+  color:  black;
+  padding: 5px;
 }
 
 #player-turn-input {
@@ -189,7 +191,7 @@ h3 {
 
 .moneyBagIcon {
   height: 20pt;
-  margin: 0 0 0 2px;
+  margin: 0 0 5px 8px;
 }
 
 .playerStats {
@@ -197,8 +199,24 @@ h3 {
   padding: 5px 0;
   display: flex;
   justify-content: space-between;
+  align-content: center;
 }
 
+.statsName {
+  padding: 3px 0 0 0;
+}
+
+.deceased .statsName,
+.deceased .statsWealth .playerWealthDisplay {
+  color: darkred;
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.deceased .moneyBagIcon {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
 
 #player0 {
   /* position: absolute;
