@@ -3,6 +3,7 @@
 // import createPlayerHTML from "./src/create-elements.js"
 // import updatePlayerStats from "./src/update-display.js"
 import Game from "./src/game.js"
+import setupDOM from "./src/setup-dom.js"
 
 // const gamePage = document.getElementById("menu-game")
 
@@ -11,9 +12,29 @@ import Game from "./src/game.js"
 // 	g.setup();
 // }
 
-const g = new Game();
-g.setup();
 
+// Finish
+const finishSetup = document.getElementById("finish-setup")
+var numbHumanPlayers = 1;
+var playerNames = []
+
+finishSetup.onclick = function() {
+	var selectHumanPlayers = document.getElementById("numberHumanPlayers")
+	numbHumanPlayers = selectHumanPlayers.value;
+	console.log("finishSetup, allPlayers: ", selectHumanPlayers.value)
+
+	var nameInputs = document.querySelectorAll(".nameInput")
+	nameInputs.forEach( input => {
+		if (input.value !== "") {
+			playerNames.push(input.value);
+		}
+	})
+	console.log("all player names: ", playerNames)
+	playerModal.style.display = "none";
+
+	const g = new Game(numbHumanPlayers, playerNames);
+	g.setup();
+}
 
 
 // Global objects
@@ -31,13 +52,7 @@ const setupPlayerScreen = document.querySelector("#playerSetup")
 // var numbHumanPlayers = 1;
 // const allPlayers = []
 
-// const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
-// selectHumanPlayers.forEach( option => {
-// 	option.onclick = function() {
-// 		numbHumanPlayers = Number(option.textContent)
-// 		console.log(numbHumanPlayers)
-// 	}
-// })
+
 
 const avatar_options = document.querySelectorAll(".avatarImage")
 
@@ -63,22 +78,6 @@ function createNewPlayer(identifier) {
 	})
 }
 
-// Finish
-const finishSetup = document.getElementById("finish-setup")
-
-finishSetup.onclick = function() {
-	// pushNewPlayer()
-	// allPlayers.forEach( (player, index) => {		// check for all players
-	// 	createPlayerHTML(player.identifier, index)
-	// })
-
-	
-	
-	console.log("finishSetup, allPlayers: " + allPlayers)
-	playerModal.style.display = "none";
-	// firstDay();
-}
-
 
 // Modal close on click
 window.onclick = function(event) {
@@ -90,17 +89,6 @@ window.onclick = function(event) {
 /*
 // create DOM for new pond
 const pond = new Pond(10)  // change this to a dynamic input**
-
-const gameTime = 7;
-var currentDay = 0;
-
-var submitTurnBtns = [];
-var removeFishInputs = [];
-
-//
-function startGame() {
-
-}
 
 
 // sets a new day
@@ -232,7 +220,15 @@ function endGame() {
 }
 */
 
-export default allPlayers
+// export default allPlayers
+
+// const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
+// selectHumanPlayers.forEach( option => {
+// 	option.onclick = function() {
+// 		numbHumanPlayers = Number(option.textContent)
+// 		console.log(numbHumanPlayers)
+// 	}
+// })
 
 // check next Button
 /* setupNextButton.onclick = function() {

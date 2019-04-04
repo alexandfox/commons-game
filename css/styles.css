@@ -37,6 +37,16 @@
   padding: 0 20px 20px 0;
 }
 
+#selectNumberPlayers {
+  /* display: flex;
+  justify-content: space-between; */
+}
+
+.custom-select {
+  width: 200px;
+  margin: 0 0 20px 0;
+}
+
 .playerAvatar {
   display: flex;
   flex-flow: row nowrap;

@@ -19,29 +19,6 @@ export default class DOM {
 	// 	return window.prompt("number of days");			// remove later
 	// }
 
-	setHumanPlayers() {
-		// return window.prompt("number of players");  
-		const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
-		var numbHumanPlayers = 1;
-
-		selectHumanPlayers.forEach( option => {
-			option.onclick = function() {
-				numbHumanPlayers = Number(option.textContent)
-				console.log("tracking selections...")
-			}
-		})
-
-		return numbHumanPlayers;
-	}
-
-	setMachinePlayers() {
-		return window.prompt("number of computer players");
-	}
-
-	setPlayerName() {
-			// return window.prompt("player name");
-	}
-
 	createPlayerHTML(playerName, playerIndex) {
 		var playerNum = "player" + playerIndex;
 		console.log("playerNumber: ", playerNum)

@@ -19,28 +19,30 @@
 				<div class="modal-body">
 					<div id="selectNumberPlayers">
 						<h2 class="modalHeading">Number of Players</h2>
-						<label class="radio-inline humanPlayers"><input type="radio" name="optradio" id="one-player" checked>1</label>
-						<label class="radio-inline humanPlayers"><input type="radio" name="optradio" id="two-players">2</label>
-						<label class="radio-inline humanPlayers"><input type="radio" name="optradio" id="three-players">3</label>
-						<label class="radio-inline humanPlayers"><input type="radio" name="optradio" id="four-players">4</label>
+						<select id="numberHumanPlayers" class="custom-select">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
 					</div>
 					<div id="playerSetup">
 						<h2 class="modalHeading">New Player</h2>
 						<div class="playerName" id="player0-setup">
 							<label for="playerName" class="userInput">Player 1: </label>
-							<input type="text" id="new-player-name" placeholder="Name" >
+							<input type="text" class="nameInput" placeholder="Name" >
 						</div>
 						<div class="playerName" id="player1-setup">
 							<label for="playerName" class="userInput">Player 2: </label>
-							<input type="text" id="new-player-name" placeholder="Name" >
+							<input type="text" class="nameInput" placeholder="Name" >
 						</div>
 						<div class="playerName" id="player2-setup">
 							<label for="playerName" class="userInput">Player 3: </label>
-							<input type="text" id="new-player-name" placeholder="Name" >
+							<input type="text" class="nameInput" placeholder="Name" >
 						</div>
 						<div class="playerName" id="player3-setup">
 							<label for="playerName" class="userInput">Player 4: </label>
-							<input type="text" id="new-player-name" placeholder="Name" >
+							<input type="text" class="nameInput" placeholder="Name" >
 						</div>
 					</div>
 				</div>

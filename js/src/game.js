@@ -6,8 +6,9 @@ import DOM from "./dom.js";
 
 
 export default class Game {
-	constructor() {
-		this.numPlayers = 1;
+	constructor(numPlayers, namesArray) {
+		this.numPlayers = numPlayers;
+		this.playerNames = namesArray;
 		this.allPlayers = [];
 		this.activePlayers = [];
 		this.pond = new Pond(10);
@@ -17,32 +18,28 @@ export default class Game {
 	}
 
 	setup() {
+		console.log("the game has started!")
+		this.createPlayerObjects(this.playerNames);
+		this.activePlayers = this.allPlayers.filter( player => player.health > -1)
+
+		console.log("all: ", this.allPlayers)
+		console.log("active: ", this.activePlayers)
+
 		// this.daysLeft = Number(this.dom.setDayCount());
-		var humanPlayers = Number(this.dom.setHumanPlayers());
 		// var machinePlayers = Number(this.dom.setMachinePlayers());
-		this.numPlayers = humanPlayers //+ machinePlayers
-	
-		var count = this.numPlayers;
+		// this.numPlayers = humanPlayers //+ machinePlayers
 
-    while (count > 0) {
-			var newPlayer = new Player(this.dom.setPlayerName(), this.allPlayers.length)
-      this.allPlayers.push(newPlayer);
-
-			console.log(newPlayer)
-			console.log(this.allPlayers)
-
-			console.log("name and index: ", newPlayer.name, newPlayer.index)
-			console.log(this.allPlayers)
-
-			this.dom.createPlayerHTML(newPlayer.name, newPlayer.index)
-      count--;
-    }
-
-		this.activePlayers = this.allPlayers.filter( player => player.health > -1
-		)
+		this.activePlayers.forEach( (player, index) => this.dom.createPlayerHTML(player.name, index) )
+		
 		// this.eachDay()
 	}
 
+	createPlayerObjects( names ) {
+		names.forEach( name => {
+			var newPlayer = new Player(name, this.allPlayers.length)
+      this.allPlayers.push(newPlayer);			
+		});
+	}
 /* 	eachDay() {
     var daysFish = 0;			//simultaneous order
     this.activePlayers.forEach( player => {
