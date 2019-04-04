@@ -8,7 +8,7 @@ const avatars = [
 // players class
 class Player {
 	constructor(name, index) { // if needed, change back to identifier
-		// this.identifier = identifier;
+		this.identifier = "player"
 		this.index = index;
 		this.name = name;
 		this.avatar = avatars[0];
@@ -17,19 +17,19 @@ class Player {
 		this.fish = 0;
 	}
 
-	eachDay( numb ) {
+	turn( numb ) {
 		if (numb > 0) {
 			this.eatFish()
-			this.sellFish( numb -1)
+			this.sellFish()
 		} else {
 			this.starve()
 		}
 	}
 
-	// catchFish(numb) {
-	// 	this.fish += numb
-	// 	this.eachDay()
-	// }
+	catchFish(numb) {
+		this.fish += numb
+		this.turn( numb)
+	}
 
 	sleep() {
 		this.health = 0
@@ -41,11 +41,12 @@ class Player {
 
 	eatFish() {
 		this.health = 1;
+		this.fish -= 1;
 	}
 
-	sellFish( numb ) {
-		this.wealth += numb;
-		// this.fish = 0;
+	sellFish() {
+		this.wealth += this.fish
+		this.fish = 0;
 	}
 }
 

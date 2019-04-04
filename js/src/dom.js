@@ -1,79 +1,113 @@
 // Global objects
 
 // modal
-const playerModal = document.getElementById("player-modal")
-const setupNextButton = document.getElementById("setup-next")
-const selectPlayersScreen = document.getElementById("selectNumberPlayers")
-const setupPlayerScreen = document.querySelector(".playerSetup")
+const playerModal = document.getElementById("player-modal");
+const setupNextButton = document.getElementById("setup-next");
+const selectPlayersScreen = document.getElementById("selectNumberPlayers");
+const setupPlayerScreen = document.querySelector(".playerSetup");
 
-const playerIconDisplay = document.getElementById("all-players")
-const playerLeaderboard = document.getElementById("leaderboard-players")
+// gameboard
+const playerIconDisplay = document.getElementById("all-players");
+const playerLeaderboard = document.getElementById("leaderboard-players");
 
+const pondFishCount = document.getElementById("fishCount");
+const dayTracker = document.getElementById("dayTracker");
+
+//input
+const turnNameDisplay = document.getElementById("turn-name-display");
+const turnInputField = document.getElementById("turn-input-value");
+const turnEnterButton = document.getElementById("enterFish");
 
 export default class DOM {
-	constructor() {
+  constructor() {}
 
+  setDayCount() {
+    return window.prompt("number of days"); // remove later
+  }
+
+  createPlayerHTML(playerName, playerIdentifier) {
+    this.createPlayerContainer(playerIdentifier);
+    this.createPlayerScoreRow(playerName, playerIdentifier);
+  }
+
+  createPlayerContainer(playerIdentifier) {
+    const playerDiv = document.createElement("div");
+    playerDiv.setAttribute("class", "playerContainer");
+    playerDiv.setAttribute("id", playerIdentifier);
+    playerIconDisplay.appendChild(playerDiv);
+
+    console.log("playerDiv", playerDiv);
+    this.createPlayerAvatar(playerDiv);
+  }
+
+  createPlayerAvatar(playerContainer) {
+    const playerAvatar = document.createElement("img");
+    playerAvatar.setAttribute("class", "avatarDisplay");
+    playerAvatar.setAttribute("src", "../img/boat-1.png");
+    playerContainer.appendChild(playerAvatar);
+  }
+
+  createPlayerScoreRow(playerName, playerNum) {
+    var rowID = playerNum + "-stats";
+		var wealthID = playerNum + "-wealth"
+
+    const playerRow = document.createElement("div");
+    playerRow.setAttribute("class", "playerStats");
+    playerRow.setAttribute("id", rowID);
+
+    const rowName = document.createElement("div");
+    rowName.setAttribute("class", "statsName");
+    rowName.textContent = playerName;
+
+    const rowWealth = document.createElement("div");
+    rowWealth.setAttribute("class", "statsWealth");
+
+    const wealthCount = document.createElement("span");
+    wealthCount.setAttribute("class", "playerWealthDisplay");
+		wealthCount.setAttribute("id", wealthID)
+    wealthCount.textContent = "0";
+    rowWealth.appendChild(wealthCount);
+
+    const coinIcon = document.createElement("img");
+    coinIcon.setAttribute("class", "moneyBagIcon");
+    coinIcon.setAttribute("src", "../img/money-bag-08.png");
+    rowWealth.appendChild(coinIcon);
+
+    playerRow.appendChild(rowName);
+    playerRow.appendChild(rowWealth);
+
+    playerLeaderboard.appendChild(playerRow);
+  }
+
+  playerTakeFish(player) {
+    return new Promise((resolve, reject) => {
+      turnNameDisplay.textContent = player.name;
+			console.log("it's turn for: ", player.name)
+
+      turnEnterButton.onclick = function() {
+				resolve(Number(turnInputField.value));
+      };
+    });
+
+    // return window.prompt(`Hey ${name}, it's day ${day}, how many fishes do you wan't to take today ?`);
+
+    // for (let i=0; i = maxFish; i++) {
+    // 	var selectOption = document.createElement("option")
+    // 	selectOption.setAttribute("value", i)
+    // 	selectOption.textContent = i;
+    // 	turnInputField.appendChild(selectOption);
+    // }
+  }
+
+	updatePlayerStats(player) {
+		var wealthID = player.identifier + "-wealth"
+		var playerWealthDisplay = document.getElementById(wealthID)
+
+		playerWealthDisplay.textContent = player.wealth;
 	}
 
-	// setDayCount() {
-	// 	return window.prompt("number of days");			// remove later
-	// }
-
-	createPlayerHTML(playerName, playerIndex) {
-		var playerNum = "player" + playerIndex;
-		console.log("playerNumber: ", playerNum)
-
-		this.createPlayerContainer(playerNum);
-		this.createPlayerScoreRow(playerName, playerNum);
-	}
-
-	createPlayerContainer(playerNum) {
-		const playerDiv = document.createElement("div")
-		playerDiv.setAttribute("class", "playerContainer")
-		playerDiv.setAttribute("id", playerNum)
-		playerIconDisplay.appendChild(playerDiv)	
-		
-		console.log("playerDiv", playerDiv)
-		this.createPlayerAvatar(playerDiv);
-	}
-
-	createPlayerAvatar(playerContainer) {
-		const playerAvatar = document.createElement("img")
-		playerAvatar.setAttribute("class", "avatarDisplay")
-		playerAvatar.setAttribute("src", "../img/boat-1.png")
-		playerContainer.appendChild(playerAvatar);
-	}
-
-	createPlayerScoreRow(playerName, playerNum) {
-		var rowID = playerNum + "-stats"
-		const playerRow = document.createElement("div")
-		playerRow.setAttribute("class", "playerStats")
-		playerRow.setAttribute("id", rowID)
-
-		const rowName = document.createElement("div")
-		rowName.setAttribute("class", "statsName")
-		rowName.textContent = playerName
-
-		const rowWealth = document.createElement("div")
-		rowWealth.setAttribute("class", "statsWealth")
-
-		const wealthCount = document.createElement("span")
-		wealthCount.setAttribute("class", "playerWealthDisplay")
-		wealthCount.textContent = "0"
-		rowWealth.appendChild(wealthCount)
-
-		const coinIcon = document.createElement("img")
-		coinIcon.setAttribute("class", "moneyBagIcon")
-		coinIcon.setAttribute("src", "../img/money-bag-08.png")
-		rowWealth.appendChild(coinIcon)
-
-		playerRow.appendChild(rowName)
-		playerRow.appendChild(rowWealth)
-
-		playerLeaderboard.appendChild(playerRow);
-	}
-
-	playerTakeFish(name, day) {
-			return window.prompt(`Hey ${name}, it's day ${day}, how many fishes do you wan't to take today ?`);
-	}
+  updateGameDisplay(day, fish) {
+    pondFishCount.textContent = fish;
+    dayTracker.textContent = day;
+  }
 }

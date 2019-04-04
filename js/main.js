@@ -3,7 +3,6 @@
 // import createPlayerHTML from "./src/create-elements.js"
 // import updatePlayerStats from "./src/update-display.js"
 import Game from "./src/game.js"
-import setupDOM from "./src/setup-dom.js"
 
 // const gamePage = document.getElementById("menu-game")
 
@@ -44,39 +43,13 @@ const selectPlayersScreen = document.getElementById("selectNumberPlayers")
 const setupPlayerScreen = document.querySelector("#playerSetup")
 
 // // Pond
-// const pondFishCount = document.getElementById("fishCount")
-// const dayTracker = document.getElementById("dayTracker")
-
-// Game Setup
-// Set number of human players
-// var numbHumanPlayers = 1;
-// const allPlayers = []
-
-
-
 const avatar_options = document.querySelectorAll(".avatarImage")
 
-// Player Inputs
-var newPlayer = null;
-const newPlayer_input = document.getElementById("new-player-name")	
-
-function pushNewPlayer() {
-	allPlayers.push(newPlayer)
-}
-
-function createNewPlayer(identifier) {
-	newPlayer = new Player(identifier)
-
-	newPlayer_input.oninput = function() {		// set player name
-		newPlayer.name = newPlayer_input.value;
-	}
-
-	avatar_options.forEach( option => {
-		option.onclick = function() {
-			newPlayer.avatar = option.src
-		}
-	})
-}
+	// avatar_options.forEach( option => {
+	// 	option.onclick = function() {
+	// 		newPlayer.avatar = option.src
+	// 	}
+	// })
 
 
 // Modal close on click
@@ -89,11 +62,9 @@ window.onclick = function(event) {
 /*
 // create DOM for new pond
 const pond = new Pond(10)  // change this to a dynamic input**
-
-
-// sets a new day
-var healthyPlayers = [];
 var turnSetting = "sim"			// default turn setting
+
+
 
 function firstDay() {
 	submitTurnBtns = document.querySelectorAll(".enterFish")
@@ -188,20 +159,6 @@ function eachTurnPlayer(player, fish) {			// updates for player each turn
 	player.eatFish()
 	player.sellFish()
 	updatePlayerStats(player)
-}
-
-function updatePond(lostFish) {			// updates for pond each turn
-	pond.removeFish(lostFish)
-	updateFishDisplay()
-}
-
-function updateFishDisplay() {
-	pondFishCount.textContent = pond.fish
-}
-
-function updateDay() {
-	currentDay += 1
-	dayTracker.textContent = currentDay
 }
 
 function hideTurnInput(turnDiv) {
