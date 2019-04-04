@@ -40,17 +40,19 @@ export default class Game {
   }
 
   eachDay() {
-    this.dom.updateGameDisplay(this.currentDay, this.pond.fish);
 		var turn = 0;
     // var daysFish = 0;			//simultaneous order
 
 		const turnDelayer = () => {
 			console.log("turn delayer");
+
+			this.dom.updateTurnSelection(this.pond.fish)
 			
       this.dom.playerTakeFish(this.activePlayers[turn]).then(turnFish => {
 				this.activePlayers[turn].catchFish(turnFish)
 				this.pond.removeFish(turnFish);
 				this.dom.updatePlayerStats(this.activePlayers[turn]);
+				this.dom.updateGameDisplay(this.currentDay, this.pond.fish)
 				console.log(this.activePlayers[turn])
 				console.log(this.pond)
 
@@ -108,11 +110,14 @@ export default class Game {
 	}
 
   removeLostPlayers() {
+		console.log("removing lost players.")
     this.activePlayers.forEach((player, index) => {
       if (player.health < 0) {
         this.activePlayers.splice(index, 1);
       } else player.sleep();
     });
+		console.log("all players: ", this.allPlayers)
+		console.log("active players: ", this.activePlayers)
   }
 
   endGame() {

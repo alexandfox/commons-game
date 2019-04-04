@@ -88,16 +88,22 @@ export default class DOM {
 				resolve(Number(turnInputField.value));
       };
     });
-
-    // return window.prompt(`Hey ${name}, it's day ${day}, how many fishes do you wan't to take today ?`);
-
-    // for (let i=0; i = maxFish; i++) {
-    // 	var selectOption = document.createElement("option")
-    // 	selectOption.setAttribute("value", i)
-    // 	selectOption.textContent = i;
-    // 	turnInputField.appendChild(selectOption);
-    // }
   }
+
+	updateTurnSelection(maxFish) {
+		this.clearTurnSelection()
+
+		for (let i=0; i <= maxFish; i++) {
+			var selectOption = document.createElement("option")
+			selectOption.setAttribute("value", i)
+			selectOption.textContent = i;
+			turnInputField.appendChild(selectOption);
+		}
+	}
+
+	clearTurnSelection() {
+		turnInputField.innerHTML = "";
+	}
 
 	updatePlayerStats(player) {
 		var wealthID = player.identifier + "-wealth"
