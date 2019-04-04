@@ -10,7 +10,7 @@ export default class Game {
     this.playerNames = namesArray;
     this.allPlayers = [];
     this.activePlayers = [];
-    this.pond = new Pond(10);
+    this.pond = new Pond(7);
     this.daysLeft = 7;
     this.currentDay = 0;
     this.dom = new DOM();
@@ -106,7 +106,6 @@ export default class Game {
 			}
     });
 	}
-
 
   removeLostPlayers() {
     this.activePlayers.forEach((player, index) => {
