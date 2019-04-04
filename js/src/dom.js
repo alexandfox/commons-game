@@ -9,6 +9,7 @@ const setupPlayerScreen = document.querySelector(".playerSetup");
 // gameboard
 const playerIconDisplay = document.getElementById("all-players");
 const playerLeaderboard = document.getElementById("leaderboard-players");
+const turnArrowDiv = document.getElementById("turn-arrows")
 
 const pondFishCount = document.getElementById("fishCount");
 const dayTracker = document.getElementById("dayTracker");
@@ -79,16 +80,37 @@ export default class DOM {
     playerLeaderboard.appendChild(playerRow);
   }
 
+	createTurnArrowHTML(playerIndex) {
+		const turnArrow = document.createElement("span")
+		var arrowID = "arrow" + playerIndex
+
+		turnArrow.setAttribute("class", "hidden")
+		turnArrow.setAttribute("id", arrowID)
+		turnArrowDiv.appendChild(turnArrow)
+	}
+
   playerTakeFish(player) {
+		this.showCurrentTurnArrow(player)
     return new Promise((resolve, reject) => {
       turnNameDisplay.textContent = player.name;
-			console.log("it's turn for: ", player.name)
 
       turnEnterButton.onclick = function() {
 				resolve(Number(turnInputField.value));
       };
     });
   }
+
+	showCurrentTurnArrow(player) {
+		var arrowID = "arrow" + player.index
+		var turnArrow = document.getElementById(arrowID)
+		turnArrow.setAttribute("class", "")
+	}
+
+	hideTurnArrow(player) {
+		var arrowID = "arrow" + player.index
+		var turnArrow = document.getElementById(arrowID)
+		turnArrow.setAttribute("class", "hidden")
+	}
 
 	updateLostPlayerDisplay(player) {
 		var rowID = player.identifier + "-stats"

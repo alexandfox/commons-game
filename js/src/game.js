@@ -30,6 +30,7 @@ export default class Game {
     this.activePlayers.forEach((player, index) => {
       player.identifier += index;
       this.dom.createPlayerHTML(player.name, player.identifier);
+			this.dom.createTurnArrowHTML(index)
     });
 
     this.eachDay();
@@ -52,6 +53,7 @@ export default class Game {
 			this.dom.updateTurnSelection(this.pond.fish)
 			
       this.dom.playerTakeFish(this.activePlayers[turn]).then(turnFish => {
+				this.dom.hideTurnArrow(this.activePlayers[turn])
 				this.activePlayers[turn].catchFish(turnFish)
 				this.pond.removeFish(turnFish);
 				this.dom.updatePlayerStats(this.activePlayers[turn]);
@@ -81,6 +83,7 @@ export default class Game {
 
 				if (daysLeft) {
 					turn = 0;
+					this.activePlayers = this.randomSeqOrder(this.activePlayers)
 					turnDelayer()
 				} else {
 					console.log("in the delayer")
@@ -108,6 +111,19 @@ export default class Game {
 				this.endGame();
 			}
     });
+	}
+
+	randomSeqOrder(players) {
+		console.log("here's the active players list: ", players)
+		for (let i = players.length - 1; i > 0; i--) {
+			let j = Math.floor(Math.random() * (i + 1));
+			let temp = players[i];
+			players[i] = players[j];
+			players[j] = temp;
+		}
+
+		console.log("here's the shuffled order list: ", players)
+		return players;
 	}
 
   removeLostPlayers() {

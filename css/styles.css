@@ -202,7 +202,10 @@ h3 {
   flex-flow: column;
 }
 
-.arrowRight {
+#arrow0,
+#arrow1,
+#arrow2,
+#arrow3 {
   margin: 10.2px 15px;
   display: inline-block;
   vertical-align: middle;

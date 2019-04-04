@@ -56,19 +56,6 @@ window.onclick = function(event) {
 var turnSetting = "sim"			// default turn setting
 
 
-function eachDay() {
-	if (turnSetting === "seq") {
-
-	}
-	else {
-		nextTurn()
-		//allTurns(nextDay)
-	}
-}
-*/
-
-
-
 function endGame() {
 	// day 7
 	console.log("game over")
@@ -78,17 +65,6 @@ function endGame() {
 	} else {
 		endEarly()
 	}
-}
-
-// returns a new array of randomly shuffled order of players
-function randomPlayerOrder(players) {
-	for (let i = players.length - 1; i > 0; i--) {
-		let j = Math.floor(Math.random() * (i + 1));
-		let temp = players[i];
-		players[i] = players[j];
-		players[j] = temp;
-	}
-	return players;
 }
 
 const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
@@ -114,3 +90,4 @@ function displayPlayerHealth(player) {
 		playerHealth.textContent = "deceased"
 	}
 }
+*/
