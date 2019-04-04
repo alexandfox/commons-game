@@ -4,12 +4,14 @@
 // import updatePlayerStats from "./src/update-display.js"
 import Game from "./src/game.js"
 
-// const g = new Game();
-// g.setup();
+const gamePage = document.getElementById("menu-game")
+
+const g = new Game();
+g.setup();
 
 
 
- 
+ /* 
 // Global objects
 var playerModal = document.getElementById("player-modal")
 
@@ -21,6 +23,7 @@ const setupPlayerScreen = document.querySelector(".playerSetup")
 // Pond
 const pondFishCount = document.getElementById("fishCount")
 const dayTracker = document.getElementById("dayTracker")
+ */
 
 /* 
 // Game Setup
@@ -60,6 +63,7 @@ function createNewPlayer(identifier) {
 	})
 }
  */
+/* 
 // check next Button
 setupNextButton.onclick = function() {
 	if (selectPlayersScreen.getAttribute("class") != "invisible") {
@@ -101,7 +105,7 @@ window.onclick = function(event) {
     playerModal.style.display = "none";
   }
 }
-
+ */
 /*
 // create DOM for new pond
 const pond = new Pond(10)  // change this to a dynamic input**

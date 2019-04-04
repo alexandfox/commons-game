@@ -18,8 +18,8 @@ export default class Game {
 
 	setup() {
 		this.daysLeft = Number(this.dom.setDayCount());
-		this.numPlayers = Number(this.dom.setPlayerCount());
-
+		this.numPlayers = Number(this.dom.setHumanPlayers());
+	
 		var count = this.numPlayers;
 
     while (count > 0) {
@@ -74,5 +74,4 @@ export default class Game {
 		alert("end of the game !!!");
 	}
 }
-
 

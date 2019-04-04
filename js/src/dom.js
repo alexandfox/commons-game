@@ -1,3 +1,12 @@
+// Global objects
+
+// modal
+const playerModal = document.getElementById("player-modal")
+const setupNextButton = document.getElementById("setup-next")
+const selectPlayersScreen = document.getElementById("selectNumberPlayers")
+const setupPlayerScreen = document.querySelector(".playerSetup")
+
+
 export default class DOM {
 	constructor() {
 
@@ -7,8 +16,19 @@ export default class DOM {
 		return window.prompt("number of days");			// remove later
 	}
 
-	setPlayerCount() {
-			return window.prompt("number of players");  // change w/ new input
+	setHumanPlayers() {
+		return window.prompt("number of players");  
+/* 		const selectHumanPlayers = document.querySelectorAll(".humanPlayers")
+		var numbHumanPlayers = 1;
+
+		selectHumanPlayers.forEach( option => {
+			option.onclick = function() {
+				numbHumanPlayers = Number(option.textContent)
+				console.log("tracking selections...")
+			}
+		})
+
+		return numbHumanPlayers; */
 	}
 
 	setPlayerName() {
