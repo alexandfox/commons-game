@@ -34,10 +34,10 @@ const playerSetupDiv = document.getElementById("playerSetup")
 // });
 
 // show game Rules modal
-hamburgerIcon.onclick = function(event) {
-	console.log("click!")
-	rulesModal.setAttribute("class", "modal fade")
-}
+// hamburgerIcon.onclick = function(event) {
+// 	console.log("click!")
+// 	rulesModal.setAttribute("class", "modal fade")
+// }
 // $(function() {
 // 	$('#hamburger-menu').on('click', function( e ) {
 // 			Custombox.open({
