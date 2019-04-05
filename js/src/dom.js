@@ -91,8 +91,12 @@ export default class DOM {
 		turnArrowDiv.appendChild(turnArrow)
 	}
 
-  playerTakeFish(player) {
+  playerTakeFish(player, choicesArray, availFish, numPlayers) {
 		this.showCurrentTurnArrow(player)
+    if (player.human === 0) {
+      return player.autoFish(choicesArray, availFish, numPlayers)
+    }
+
     return new Promise((resolve, reject) => {
       turnNameDisplay.textContent = player.name;
 

@@ -15,6 +15,7 @@ class Player {
 		this.wealth = 0;
 		this.health = 0;
 		this.fish = 0;
+		this.human = 1;
 	}
 
 	turn( numb ) {

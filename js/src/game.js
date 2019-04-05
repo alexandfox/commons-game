@@ -46,20 +46,23 @@ export default class Game {
   eachDay() {
 		var turn = 0;
     // var daysFish = 0;			//simultaneous order
+		var humanChoices = [];
 
 		const turnDelayer = () => {
 			console.log("turn delayer");
 
 			this.dom.updateTurnSelection(this.pond.fish)
 			
-      this.dom.playerTakeFish(this.activePlayers[turn]).then(turnFish => {
+      this.dom.playerTakeFish(this.activePlayers[turn], humanChoices, this.pond.fish, this.numPlayers).then(turnFish => {
+				console.log("player: ", this.activePlayers[turn], "chooses: ", turnFish)
 				this.dom.hideTurnArrow(this.activePlayers[turn])
 				this.activePlayers[turn].catchFish(turnFish)
 				this.pond.removeFish(turnFish);
 				this.dom.updatePlayerStats(this.activePlayers[turn]);
 				this.dom.updateGameDisplay(this.currentDay, this.pond.fish)
-				console.log(this.activePlayers[turn])
-				console.log(this.pond)
+				humanChoices.push(turnFish)
+
+				console.log("human choices, end of turn: ", humanChoices)
 
         turn++;
         if (turn < this.activePlayers.length) {
@@ -72,21 +75,20 @@ export default class Game {
 		// turnDelayer();
 
 		const dayDelayer = () => {
-			console.log("day delayer")
-
 			this.checkGameStatus().then( daysLeft => {
 				this.daysLeft--
 				this.currentDay++
 				this.pond.popGrowth();
 				this.dom.updateGameDisplay(this.currentDay, this.pond.fish)
-				console.log("its a new day");
+				console.log("its a new day");  // do something here
 
 				if (daysLeft) {
 					turn = 0;
+					humanChoices = [];
+					console.log("human choices, end of day: ", humanChoices)
 					this.activePlayers = this.randomSeqOrder(this.activePlayers)
 					turnDelayer()
 				} else {
-					console.log("in the delayer")
 					this.endGame();
 				}
 			});
