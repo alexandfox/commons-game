@@ -17,7 +17,7 @@ const rulesModal = document.getElementById("rules-modal")
 
 // setup
 const selectHumanPlayers = document.getElementById("numberHumanPlayers");
-const selectNumberGroup = document.getElementById("selectVillageSize")
+const selectNumberGroup = document.getElementById("numberGroup")
 const playerSetupDiv = document.getElementById("playerSetup")
 
 $(document).ready(function(){
@@ -49,12 +49,19 @@ const finishSetup = document.getElementById("finish-setup")
 // var numbHumanPlayers = 1;
 var playerNames = []
 
-finishSetup.onclick = function() {
-	// var selectHumanPlayers = document.getElementById("numberHumanPlayers")
-	// numbHumanPlayers = selectHumanPlayers.value;
-	// console.log("finishSetup, allPlayers: ", selectHumanPlayers.value)
+getVillageSize().then( groupSize => {
+		console.log("the group size is: ", groupSize);
+		showHumanOptions(groupSize)
+		setHumanPlayers().then( humans => {
+			console.log("the human player size is: ", humans);
+			showNameInputs(humans)
+	})
+})
 
-	setNumberPlayers()
+finishSetup.onclick = function() {
+	var villageSize = selectNumberGroup.value;
+	var numbHumanPlayers = selectHumanPlayers.value;
+	console.log("finishSetup, allPlayers: ", villageSize, "human players:",  selectHumanPlayers.value)
 
 	var nameInputs = document.querySelectorAll(".nameInput")
 	nameInputs.forEach( input => {
@@ -65,18 +72,47 @@ finishSetup.onclick = function() {
 	console.log("all player names: ", playerNames)
 	playerModal.style.display = "none";
 
-	const g = new Game(numbHumanPlayers, playerNames);
+	const g = new Game(villageSize, numbHumanPlayers, playerNames);
 	g.setup();
 }
 
-function setNumberPlayers() {
-  var numGroup = selectNumberGroup.value;
-	var numHumans = selectHumanPlayers.value;
+function setHumanPlayers() {
+	var numHumans = 1;
 
+	return new Promise( (resolve, reject) => {
+		console.log("here i am in the humanNumb promise")
+		selectHumanPlayers.oninput = function() {
+			numHumans = selectHumanPlayers.value;
+			resolve(Number(numHumans))
+		}
+	})
 }
 
+function getVillageSize() {
+	var numGroup = 1;
+
+	return new Promise( (resolve, reject) => {
+		console.log("here i am in the village group promise")
+		selectNumberGroup.oninput = function() {
+			numGroup = selectNumberGroup.value;
+			resolve(Number(numGroup))
+		}
+	})
+}
+
+function showHumanOptions(num) {
+	var maxHumans = num
+	for (let i=1; i <= maxHumans; i++) {
+		const numbOption = document.createElement("option")
+		numbOption.setAttribute("value", i);
+		numbOption.textContent = i;
+		selectHumanPlayers.appendChild(numbOption)
+	}
+}
+
+
 function showNameInputs( num ) {
-	for (i=0; i< num; i++;) {
+	for (let i=0; i< num; i++) {
 		var setupID = "player" + i + "-setup";
 
     const setupDiv = document.createElement("div");
@@ -86,14 +122,14 @@ function showNameInputs( num ) {
 
 		const setupLabel = document.createElement("label")
     setupLabel.setAttribute("class", "userInput");
-		setupLabel.textContent = "Player " + i + ": "
+		setupLabel.textContent = "Player " + (i + 1) + ": "
 		setupDiv.appendChild(setupLabel)
 
     const setupInput = document.createElement("input");
     setupInput.setAttribute("class", "nameInput");
-		wealthCount.setAttribute("type", "text")
-    wealthCount.setAttribute("placeholder", "Name")
-    setupDiv.appendChild(wealthCount);
+		setupInput.setAttribute("type", "text")
+    setupInput.setAttribute("placeholder", "Name")
+    setupDiv.appendChild(setupInput);
 
 		playerSetupDiv.appendChild(setupDiv)
 	}

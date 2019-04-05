@@ -5,8 +5,9 @@ import Pond from "./pond.js";
 import DOM from "./dom.js";
 
 export default class Game {
-  constructor(numPlayers, namesArray) {
-    this.numPlayers = numPlayers;
+  constructor(villageSize, humanPlayers, namesArray) {
+		this.villageSize = villageSize;
+    this.humanPlayers = humanPlayers;
     this.playerNames = namesArray;
     this.allPlayers = [];
     this.activePlayers = [];
