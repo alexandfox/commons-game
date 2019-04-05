@@ -57,7 +57,7 @@ export default class Game {
 
   eachDay() {
 		var turn = 0;
-    // var daysFish = 0;			//simultaneous order
+    var daysFish = 0;			//simultaneous order
 		var humanChoices = [];
 
 		const turnDelayer = () => {
@@ -75,17 +75,18 @@ export default class Game {
 				this.dom.updateGameDisplay(this.currentDay, this.pond.fish)
 				humanChoices.push(turnFish)
 
+				daysFish += turnFish
         turn++;
         if (turn < this.activePlayers.length) {
 					turnDelayer()
         } else {
-					dayDelayer()
+					dayDelayer(daysFish)
 				}
       });
     }
 		// turnDelayer();
 
-		const dayDelayer = () => {
+		const dayDelayer = (daysFish) => {
 			this.checkGameStatus().then( daysLeft => {
 				this.daysLeft--
 				this.currentDay++
@@ -97,6 +98,7 @@ export default class Game {
 					turn = 0;
 					humanChoices = [];
 					this.activePlayers = this.randomSeqOrder(this.activePlayers)
+					this.dom.updateEndOfDay(this.currentDay, daysFish, this.activePlayers)
 					turnDelayer()
 				} else {
 					this.endGame();

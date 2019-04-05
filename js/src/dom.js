@@ -29,6 +29,17 @@ const endDay = document.getElementById("game-recap-day");
 const endPlayers = document.getElementById("surviving-players");
 
 
+// end of day
+const recapDay = document.getElementById("recap-day")
+const recapFish = document.getElementById("recap-yesterday-fish")
+
+const todaysFish = document.getElementById("recap-fish-pop")
+const lostPlayers = document.getElementById("recap-lost-players")
+
+const survivingPlayers = document.getElementById("recap-surviving-players")
+const turnOrder = document.getElementById("recap-turn-order")
+
+
 export default class DOM {
   constructor() {}
 
@@ -196,5 +207,22 @@ export default class DOM {
     }
 
     endPlayers.textContent = text;
+  }
+
+  updateEndOfDay(day, ydayFish, activePlayers) {
+    recapDay.textContent = day;
+    recapFish.textContent = ydayFish;
+
+    var namesPlayers = ""
+    activePlayers.forEach( player => {
+      namesPlayers += player.name + ", "
+    })
+    survivingPlayers.textContent = namesPlayers
+
+    // const turnPlayers = ""
+    // turnArray.forEach( (player, index) => {
+    //   turnPlayers += index + ": " + player.name + ", "
+    // })
+    // turnOrder.textContent = turnPlayers;
   }
 }

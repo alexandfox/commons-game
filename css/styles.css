@@ -434,13 +434,23 @@ h3 {
 
 #recap-container {
   display: flex;
-  position: relative;
-  width: 100%;
+  position: absolute;
   justify-content: center;
+  left: 0;
+  bottom: 0;
 }
 
 #day-recap {
-  height: 250px;
-  width: 400px;
-  background-color: white;
+  padding: 20px;
+  width: 300px;
+  border: 1.5px solid #39587F;
+}
+
+.recapText {
+  color: #99AFCC;
+  padding: 0 10px 0 0;
+}
+
+.recapChange {
+  color: black;
 }
