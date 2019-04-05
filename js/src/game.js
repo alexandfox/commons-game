@@ -43,6 +43,10 @@ export default class Game {
     });
   }
 
+	createVillagers() {
+
+  }
+
   eachDay() {
 		var turn = 0;
     // var daysFish = 0;			//simultaneous order

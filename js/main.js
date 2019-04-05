@@ -15,6 +15,10 @@ const endModalExit = document.getElementById("end-close")
 const hamburgerIcon = document.getElementById("hamburger-menu")
 const rulesModal = document.getElementById("rules-modal")
 
+// setup
+const selectHumanPlayers = document.getElementById("numberHumanPlayers");
+const selectNumberGroup = document.getElementById("selectVillageSize")
+const playerSetupDiv = document.getElementById("playerSetup")
 
 $(document).ready(function(){
   var show_btn=$("#hamburger-menu");
@@ -30,7 +34,6 @@ hamburgerIcon.onclick = function(event) {
 	console.log("click!")
 	rulesModal.setAttribute("class", "modal fade")
 }
-
 $(function() {
 	$('#hamburger-menu').on('click', function( e ) {
 			Custombox.open({
@@ -41,15 +44,17 @@ $(function() {
 	});
 });
 
-// Finish
+// Setup
 const finishSetup = document.getElementById("finish-setup")
-var numbHumanPlayers = 1;
+// var numbHumanPlayers = 1;
 var playerNames = []
 
 finishSetup.onclick = function() {
-	var selectHumanPlayers = document.getElementById("numberHumanPlayers")
-	numbHumanPlayers = selectHumanPlayers.value;
-	console.log("finishSetup, allPlayers: ", selectHumanPlayers.value)
+	// var selectHumanPlayers = document.getElementById("numberHumanPlayers")
+	// numbHumanPlayers = selectHumanPlayers.value;
+	// console.log("finishSetup, allPlayers: ", selectHumanPlayers.value)
+
+	setNumberPlayers()
 
 	var nameInputs = document.querySelectorAll(".nameInput")
 	nameInputs.forEach( input => {
@@ -64,6 +69,37 @@ finishSetup.onclick = function() {
 	g.setup();
 }
 
+function setNumberPlayers() {
+  var numGroup = selectNumberGroup.value;
+	var numHumans = selectHumanPlayers.value;
+
+}
+
+function showNameInputs( num ) {
+	for (i=0; i< num; i++;) {
+		var setupID = "player" + i + "-setup";
+
+    const setupDiv = document.createElement("div");
+    setupDiv.setAttribute("class", "playerName");
+    setupDiv.setAttribute("id", setupID);
+		
+
+		const setupLabel = document.createElement("label")
+    setupLabel.setAttribute("class", "userInput");
+		setupLabel.textContent = "Player " + i + ": "
+		setupDiv.appendChild(setupLabel)
+
+    const setupInput = document.createElement("input");
+    setupInput.setAttribute("class", "nameInput");
+		wealthCount.setAttribute("type", "text")
+    wealthCount.setAttribute("placeholder", "Name")
+    setupDiv.appendChild(wealthCount);
+
+		playerSetupDiv.appendChild(setupDiv)
+	}
+}
+
+  
 	// avatar_options.forEach( option => {
 	// 	option.onclick = function() {
 	// 		newPlayer.avatar = option.src

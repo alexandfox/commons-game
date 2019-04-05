@@ -3,10 +3,10 @@
 // modal
 const playerModal = document.getElementById("player-modal");
 const setupNextButton = document.getElementById("setup-next");
-const selectPlayersScreen = document.getElementById("selectNumberPlayers");
 const setupPlayerScreen = document.querySelector(".playerSetup");
 
 const endModal = document.getElementById("game-recap")
+
 
 // gameboard
 const playerIconDisplay = document.getElementById("all-players");
