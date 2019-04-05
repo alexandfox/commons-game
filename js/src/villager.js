@@ -7,11 +7,28 @@ class Villager extends Player {
 	}
 
 	autoFish(choicesArray, availFish, numPlayers) {
-		if (!choicesArray.length) {		// no human players have made a move yet
-			return Math.floor(availFish/numPlayers)
+		if (!availFish) {
+			this.starve()
+			return 0
 		} else {
-			return choicesArray[Math.floor(Math.random() * choicesArray.length)]
+			if (!choicesArray.length) {		// no human players have made a move yet
+				var randomChoice = Math.floor(availFish/numPlayers)
+				console.log("i am a villager, my randomChoice is: ", randomChoice)
+
+				// this.fish += randomChoice
+				// this.turn( randomChoice)
+				return randomChoice
+			} else {
+				var copyChoice = choicesArray[Math.floor(Math.random() * choicesArray.length)]
+				console.log("i am a villager, my copyChoice is: ", copyChoice)
+
+				// this.fish += copyChoice
+				// this.turn( copyChoice)
+				return copyChoice
+			}
 		}
+
+
 	}
 }
 

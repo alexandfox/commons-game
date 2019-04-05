@@ -61,20 +61,18 @@ export default class Game {
 		var humanChoices = [];
 
 		const turnDelayer = () => {
-			console.log("turn delayer");
-
 			this.dom.updateTurnSelection(this.pond.fish)
 			
+			console.log("before the turn, player up is: ", this.activePlayers[turn].identifier)
       this.dom.playerTakeFish(this.activePlayers[turn], humanChoices, this.pond.fish, this.activePlayers.length).then(turnFish => {
-				console.log("player: ", this.activePlayers[turn], "chooses: ", turnFish)
+				console.log("in the turn, active player is: ", this.activePlayers[turn].identifier)	
+
 				this.dom.hideTurnArrow(this.activePlayers[turn])
 				this.activePlayers[turn].catchFish(turnFish)
 				this.pond.removeFish(turnFish);
 				this.dom.updatePlayerStats(this.activePlayers[turn]);
 				this.dom.updateGameDisplay(this.currentDay, this.pond.fish)
 				humanChoices.push(turnFish)
-
-				console.log("human choices, end of turn: ", humanChoices)
 
         turn++;
         if (turn < this.activePlayers.length) {
@@ -97,7 +95,6 @@ export default class Game {
 				if (daysLeft) {
 					turn = 0;
 					humanChoices = [];
-					console.log("human choices, end of day: ", humanChoices)
 					this.activePlayers = this.randomSeqOrder(this.activePlayers)
 					turnDelayer()
 				} else {
@@ -118,17 +115,17 @@ export default class Game {
 	checkGameStatus() {
 		return new Promise((resolve, reject) => {
 			this.removeLostPlayers()
-			if (this.daysLeft && (this.activePlayers.length > 0) ) {
-				resolve(this.daysLeft)
+			console.log("removed lost players: ")
+			// && this.pond.fish
+			if (this.daysLeft && (this.activePlayers.length > 0)) 
+				{ resolve(this.daysLeft)
 			} else {
-				console.log("in the promise")
 				this.endGame();
 			}
     });
 	}
 
 	randomSeqOrder(players) {
-		console.log("here's the active players list: ", players)
 		for (let i = players.length - 1; i > 0; i--) {
 			let j = Math.floor(Math.random() * (i + 1));
 			let temp = players[i];
@@ -136,23 +133,27 @@ export default class Game {
 			players[j] = temp;
 		}
 
-		console.log("here's the shuffled order list: ", players)
 		return players;
 	}
 
   removeLostPlayers() {
-		console.log("removing lost players.")
     this.activePlayers.forEach((player, index) => {
       if (player.health < 0) {
+				console.log("this player is dead: ", player.identifier)
 				this.dom.updateLostPlayerDisplay(player)
         this.activePlayers.splice(index, 1);
       } else player.sleep();
     });
-		console.log("all players: ", this.allPlayers)
-		console.log("active players: ", this.activePlayers)
+		// console.log("all players: ", this.allPlayers)
+		// console.log("active players: ", this.activePlayers)
   }
 
   endGame() {
     this.dom.showEndGameStats();
   }
+
+	endEarly() {
+		console.log("the game ended early. this pond is empty, and all players are dead")
+
+	}
 }

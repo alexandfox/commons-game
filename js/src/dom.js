@@ -97,8 +97,12 @@ export default class DOM {
   playerTakeFish(player, choicesArray, availFish, numPlayers) {
 		this.showCurrentTurnArrow(player)
     if (!player.human) {
+      turnNameDisplay.textContent = player.name;
       return new Promise( (resolve, reject) => {
-        resolve(player.autoFish(choicesArray, availFish, numPlayers));
+        turnNameDisplay.textContent = player.name; 
+        var villagerChoice = player.autoFish(choicesArray, availFish, numPlayers)
+        if (!villagerChoice) this.updateLostPlayerDisplay(player)
+        resolve(villagerChoice);
       });
     }
 
@@ -132,7 +136,7 @@ export default class DOM {
 	updateTurnSelection(maxFish) {
 		this.clearTurnSelection()
 
-		for (let i=0; i <= maxFish; i++) {
+		for (let i=1; i <= maxFish; i++) {
 			var selectOption = document.createElement("option")
 			selectOption.setAttribute("value", i)
 			selectOption.textContent = i;
@@ -142,6 +146,10 @@ export default class DOM {
 
 	clearTurnSelection() {
 		turnInputField.innerHTML = "";
+    var selectOption = document.createElement("option")
+    selectOption.setAttribute("value", 0)
+    selectOption.textContent = 0;
+    turnInputField.appendChild(selectOption);
 	}
 
 	updatePlayerStats(player) {
@@ -158,6 +166,9 @@ export default class DOM {
 
 	showEndGameStats() {
 		endModal.setAttribute("class", "modal")
+
+
+
     window.onclick = function(event) {
       if (event.target == endModal) {
         endModal.style.display = "none";
@@ -168,5 +179,4 @@ export default class DOM {
       endModal.style.display = "none";
     }
 	}
-
 }
