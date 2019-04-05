@@ -39,7 +39,7 @@
 	height: 104px;
 }
 
-#menu-box {
+#menu-box, .menuBox {
   display: flex;
   justify-content: space-around;
   position: absolute;
@@ -47,7 +47,7 @@
   width: 100%;
 }
 
-#main-menu {
+#main-menu, .menuUl {
   display: flex;
   justify-content: center;
   width: 400px;
@@ -405,4 +405,25 @@ h3 {
 .modal-title {
   font-size: 22px;
   text-transform: uppercase;
+}
+
+#intro-background {
+  background-color: #BFDBFF;
+	height: 650px;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.centeredContent {
+  width: 70%;
+  max-width: 800px;
+  /* position: absolute;
+  top: 5%; */
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
 }
