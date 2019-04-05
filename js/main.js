@@ -20,29 +20,33 @@ const selectHumanPlayers = document.getElementById("numberHumanPlayers");
 const selectNumberGroup = document.getElementById("numberGroup")
 const playerSetupDiv = document.getElementById("playerSetup")
 
-$(document).ready(function(){
-  var show_btn=$("#hamburger-menu");
-  var show_btn=$("#hamburger-menu");
+// $(document).ready(function(){
+//   var show_btn=$("#hamburger-menu");
+//   var show_btn=$("#hamburger-menu");
   
-    show_btn.click(function(){
-      $('#rules-modal').modal('show');
-  })
-});
+//     show_btn.click(function(){
+//       $('#rules-modal').modal('show');
+//   })
+// });
+
+// window.addEventListener("DOMContentLoaded", function() {
+
+// });
 
 // show game Rules modal
 hamburgerIcon.onclick = function(event) {
 	console.log("click!")
 	rulesModal.setAttribute("class", "modal fade")
 }
-$(function() {
-	$('#hamburger-menu').on('click', function( e ) {
-			Custombox.open({
-					target: '#rules-modal',
-					effect: 'fadein'
-			});
-			e.preventDefault();
-	});
-});
+// $(function() {
+// 	$('#hamburger-menu').on('click', function( e ) {
+// 			Custombox.open({
+// 					target: '#rules-modal',
+// 					effect: 'fadein'
+// 			});
+// 			e.preventDefault();
+// 	});
+// });
 
 // Setup
 const finishSetup = document.getElementById("finish-setup")
