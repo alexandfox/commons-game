@@ -18,6 +18,7 @@
   /* position: absolute;
   top: 25%;
   left: 35%; */
+  margin: 10% 0;
   display: flex;
   justify-content: space-around;
 }
@@ -60,6 +61,7 @@
 .mainMenuItem a, .mainMenuItem p {
   font-size: 20px;
   text-transform: uppercase;
+  color: #39587F;
 }
 
 
