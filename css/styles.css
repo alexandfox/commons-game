@@ -89,12 +89,28 @@
   height: 530px;
 }
 
+.modal-header {
+  padding: 5px;
+}
+
+.close {
+  padding: 5px;
+}
+
 .modalHeading {
   font-size: 18px;
   text-decoration: underline;
   text-transform: uppercase;
   padding: 0px;
   font-weight: 300;
+}
+
+.rulesBullet {
+  margin: 0;
+}
+
+#yourGoal {
+  padding: 0 0 10px;
 }
 
 .setupText {
@@ -237,12 +253,20 @@ h3 {
   left: 0px;
 } */
 
+#input-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+}
 
 #player-input {
   box-sizing: border-box;
-  position: absolute;
-  bottom: 0px;
-  left: 30%;
+  /* position: absolute;
+  bottom: 0px; */
+  /* left: 30%; */
 }
 
 #player-turn-text, #turn-name-display {
@@ -264,7 +288,7 @@ h3 {
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  margin: 0 0 50px;
+  /* margin: 0 0 50px; */
 }
 
 #listPlayers {

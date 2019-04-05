@@ -6,6 +6,9 @@ const setupNextButton = document.getElementById("setup-next");
 const setupPlayerScreen = document.querySelector(".playerSetup");
 
 const endModal = document.getElementById("game-recap")
+const endModalExit = document.getElementById("end-close")
+const rulesModal = document.getElementById("rules-modal")
+const rulesModalExit = document.getElementById("rules-close")
 
 
 // gameboard
@@ -155,6 +158,15 @@ export default class DOM {
 
 	showEndGameStats() {
 		endModal.setAttribute("class", "modal")
+    window.onclick = function(event) {
+      if (event.target == endModal) {
+        endModal.style.display = "none";
+      }
+    }
+
+    endModalExit.onclick = function(event) {
+      endModal.style.display = "none";
+    }
 	}
 
 }

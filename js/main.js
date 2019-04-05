@@ -8,12 +8,11 @@ import Game from "./src/game.js"
 // Global objects
 const playerModal = document.getElementById("player-modal")
 const avatar_options = document.querySelectorAll(".avatarImage")
-
 const endModal = document.getElementById("game-recap")
-const endModalExit = document.getElementById("end-close")
 
 const hamburgerIcon = document.getElementById("hamburger-menu")
 const rulesModal = document.getElementById("rules-modal")
+const rulesModalExit = document.getElementById("rules-close")
 
 // setup
 const selectHumanPlayers = document.getElementById("numberHumanPlayers");
@@ -33,11 +32,27 @@ const playerSetupDiv = document.getElementById("playerSetup")
 
 // });
 
-// show game Rules modal
-// hamburgerIcon.onclick = function(event) {
-// 	console.log("click!")
-// 	rulesModal.setAttribute("class", "modal fade")
-// }
+//show game Rules modal
+hamburgerIcon.onclick = function(event) {
+	console.log("click!")
+	rulesModal.setAttribute("class", "modal")
+	rulesModal.style.display = "block";
+
+	window.onclick = function(event) {
+		if (event.target == rulesModal) {
+			rulesModal.style.display = "none";
+		}
+	}
+
+	rulesModalExit.onclick = function(event) {
+		rulesModal.style.display = "none";
+	}
+}
+
+// Modal close on click
+//
+
+
 // $(function() {
 // 	$('#hamburger-menu').on('click', function( e ) {
 // 			Custombox.open({
@@ -146,17 +161,6 @@ function showNameInputs( num ) {
 	// 	}
 	// })
 
-
-// Modal close on click
-window.onclick = function(event) {
-  if (event.target == endModal) {
-    endModal.style.display = "none";
-  }
-}
-
-endModalExit.onclick = function(event) {
-  endModal.style.display = "none";
-}
 
 /*
 var turnSetting = "sim"			// default turn setting
