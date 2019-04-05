@@ -422,6 +422,17 @@ h3 {
   flex-direction: column;
 }
 
+.background {
+  background-color: #BFDBFF;
+	height: 650px;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
 .centeredContent {
   width: 70%;
   max-width: 800px;
