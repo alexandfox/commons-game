@@ -14,6 +14,10 @@ const hamburgerIcon = document.getElementById("hamburger-menu")
 const rulesModal = document.getElementById("rules-modal")
 const rulesModalExit = document.getElementById("rules-close")
 
+const menuIntroClick = document.getElementById("menu-intro")
+const introModal = document.getElementById("intro-modal")
+const introClose = document.getElementById("intro-close")
+
 // setup
 const selectHumanPlayers = document.getElementById("numberHumanPlayers");
 const selectNumberGroup = document.getElementById("numberGroup")
@@ -31,6 +35,25 @@ const playerSetupDiv = document.getElementById("playerSetup")
 // window.addEventListener("DOMContentLoaded", function() {
 
 // });
+
+// index Rules modal
+// menuIntroClick.onclick = function(event) {
+// 	console.log("click!")
+// 	introModal.setAttribute("class", "modal")
+// 	introModal.style.display = "block";
+
+// 	window.onclick = function(event) {
+// 		if (event.target == introModal) {
+// 			introModal.style.display = "none";
+// 			introModal.setAttribute("class", "modal hidden")
+// 		}
+// 	}
+
+// 	introClose.onclick = function(event) {
+// 		introModal.style.display = "none";
+// 		introModal.setAttribute("class", "modal hidden")
+// 	}
+// }
 
 //show game Rules modal
 hamburgerIcon.onclick = function(event) {
