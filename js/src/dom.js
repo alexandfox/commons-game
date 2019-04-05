@@ -24,6 +24,11 @@ const turnNameDisplay = document.getElementById("turn-name-display");
 const turnInputField = document.getElementById("turn-input-value");
 const turnEnterButton = document.getElementById("enterFish");
 
+// end of game
+const endDay = document.getElementById("game-recap-day");
+const endPlayers = document.getElementById("surviving-players");
+
+
 export default class DOM {
   constructor() {}
 
@@ -167,8 +172,6 @@ export default class DOM {
 	showEndGameStats() {
 		endModal.setAttribute("class", "modal")
 
-
-
     window.onclick = function(event) {
       if (event.target == endModal) {
         endModal.style.display = "none";
@@ -179,4 +182,19 @@ export default class DOM {
       endModal.style.display = "none";
     }
 	}
+
+  updateEndGameStats( day, playersArray) {
+    endDay.textContent = day;
+    var text = "";
+
+    if (!playersArray.length) {
+      text = "None :( All players have died, and there are no fish left."
+    } else {
+      playersArray.forEach( player => {
+        text += " " + player.name + ","
+      })
+    }
+
+    endPlayers.textContent = text;
+  }
 }

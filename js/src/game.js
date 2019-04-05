@@ -61,11 +61,12 @@ export default class Game {
 		var humanChoices = [];
 
 		const turnDelayer = () => {
+			// this.removeLostPlayers()
 			this.dom.updateTurnSelection(this.pond.fish)
 			
-			console.log("before the turn, player up is: ", this.activePlayers[turn].identifier)
+			// console.log("before the turn, player up is: ", this.activePlayers[turn].identifier)
       this.dom.playerTakeFish(this.activePlayers[turn], humanChoices, this.pond.fish, this.activePlayers.length).then(turnFish => {
-				console.log("in the turn, active player is: ", this.activePlayers[turn].identifier)	
+				// console.log("in the turn, active player is: ", this.activePlayers[turn].identifier)	
 
 				this.dom.hideTurnArrow(this.activePlayers[turn])
 				this.activePlayers[turn].catchFish(turnFish)
@@ -109,14 +110,23 @@ export default class Game {
     // let count = Number(player.catchFishes());
     // daysFish += turnFish;
     // });
-
   }
 
+	checkPondStatus() {
+		if (!this.pond.fish) {
+			this.activePlayers.forEach( player => {
+				player.starve()
+			})
+		}
+		this.removeLostPlayers()
+	}
+
 	checkGameStatus() {
+		this.checkPondStatus()
+
 		return new Promise((resolve, reject) => {
 			this.removeLostPlayers()
-			console.log("removed lost players: ")
-			// && this.pond.fish
+			
 			if (this.daysLeft && (this.activePlayers.length > 0)) 
 				{ resolve(this.daysLeft)
 			} else {
@@ -144,11 +154,14 @@ export default class Game {
         this.activePlayers.splice(index, 1);
       } else player.sleep();
     });
-		// console.log("all players: ", this.allPlayers)
-		// console.log("active players: ", this.activePlayers)
+		console.log("all players: ", this.allPlayers)
+		console.log("active players: ", this.activePlayers)
+
+		if (!this.activePlayers.length) this.endGame()
   }
 
   endGame() {
+		this.dom.updateEndGameStats(this.currentDay, this.activePlayers)
     this.dom.showEndGameStats();
   }
 

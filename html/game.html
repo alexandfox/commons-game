@@ -66,7 +66,7 @@
 		</div>
 	</div>
 	<div id="rules-modal" class="modal fade hidden">
-		<div class="modal-content">
+		<div class="modal-content" id="rules-content">
 			<div class="modal-header">
 				<div class="close" id="rules-close">x</div>
 			</div>
@@ -82,7 +82,7 @@
 						<li class="rulesBullet">Each day, each player will have a turn to fish. Turn order is determined randomly at the start of each day.</li>
 						<li class="rulesBullet">Each turn, you choose the number of fish you will take that day. You are able to see the total fish available, and how many fish other players have taken.</li>
 						<li class="rulesBullet">You must eat one fish a day to survive. This will be automatically deducted from the total fish you catch. Any remaining fish will be sold, and 1 coin automatically added to your personal wealth for each fish sold. <img src="../img/money-bag-08.png" class="moneyBagIcon"></li>
-						<li class="rulesBullet">At the end of each day, any player who has not been able to catch a single fish will starve, and be removed from the game.</li>
+						<li class="rulesBullet">At the end of each day, any player who has not been able to catch a single fish will starve, and be removed from the game. Every night, the fish population will reproduce. Each pair of fish can produce one child. (If there are 10 fish tonight, there will be 15 fish tomorrow).</li>
 						<li class="rulesBullet">If the fish population reaches zero, the game ends. </li>
 					</ul>
 				</div>
@@ -130,6 +130,13 @@
 			</div>	
 		</div>
 
+		<div id="recap-container">
+			<div id="day-recap"> 
+				<!-- class="hidden" -->
+				hello. there
+			</div>
+		</div>
+
 		<div id="listPlayers">
 			<p id="leaderboard-text">players</p>
 			<div id="leaderboard">
@@ -146,6 +153,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="game-recap" class="modal hidden">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -154,6 +162,12 @@
 				</div>
 				<div class="modal-body">
 					<h4 class="modalHeading"></h4>
+					<div id="recap-text" class="modalText">
+						<ul class="rulesList">
+							<li class="rulesBullet">You made it to: Day<span id="game-recap-day"></span></li>
+							<li class="rulesBullet">Surviving players: <span id="surviving-players"></span></li>
+						</ul>	
+					</div>
 				</div>
 			</div>
 		</div>

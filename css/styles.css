@@ -105,6 +105,10 @@
   font-weight: 300;
 }
 
+#rules-content {
+  height: 600px !important;
+}
+
 .rulesBullet {
   margin: 0;
 }
@@ -426,4 +430,17 @@ h3 {
   margin: 5% auto;
   display: flex;
   flex-direction: column;
+}
+
+#recap-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+}
+
+#day-recap {
+  height: 250px;
+  width: 400px;
+  background-color: white;
 }
