@@ -3,6 +3,7 @@ import Pond from "./pond.js";
 // import createPlayerHTML from "./src/create-elements.js"
 // import updatePlayerStats from "./src/update-display.js"
 import DOM from "./dom.js";
+import Villager from "./villager.js"
 
 export default class Game {
   constructor(villageSize, humanPlayers, namesArray) {
@@ -18,7 +19,10 @@ export default class Game {
   }
 
   setup() {
+		var numVillagers  = this.villageSize - this.humanPlayers;
+
     this.createPlayerObjects(this.playerNames);
+		this.createVillagers(numVillagers)
     this.activePlayers = this.allPlayers.filter(player => player.health > -1);
 
 		if (this.allPlayers < 4) this.pond = new Pond(7)
@@ -44,8 +48,11 @@ export default class Game {
     });
   }
 
-	createVillagers() {
-
+	createVillagers(num) {
+		for (let i=0; i<num; i++) {
+			var newVillager = new Villager("Villager", this.allPlayers.length);
+			this.allPlayers.push(newVillager)
+		}
   }
 
   eachDay() {
@@ -58,7 +65,7 @@ export default class Game {
 
 			this.dom.updateTurnSelection(this.pond.fish)
 			
-      this.dom.playerTakeFish(this.activePlayers[turn], humanChoices, this.pond.fish, this.numPlayers).then(turnFish => {
+      this.dom.playerTakeFish(this.activePlayers[turn], humanChoices, this.pond.fish, this.activePlayers.length).then(turnFish => {
 				console.log("player: ", this.activePlayers[turn], "chooses: ", turnFish)
 				this.dom.hideTurnArrow(this.activePlayers[turn])
 				this.activePlayers[turn].catchFish(turnFish)

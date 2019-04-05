@@ -93,8 +93,10 @@ export default class DOM {
 
   playerTakeFish(player, choicesArray, availFish, numPlayers) {
 		this.showCurrentTurnArrow(player)
-    if (player.human === 0) {
-      return player.autoFish(choicesArray, availFish, numPlayers)
+    if (!player.human) {
+      return new Promise( (resolve, reject) => {
+        resolve(player.autoFish(choicesArray, availFish, numPlayers));
+      });
     }
 
     return new Promise((resolve, reject) => {

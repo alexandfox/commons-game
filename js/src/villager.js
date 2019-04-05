@@ -10,7 +10,9 @@ class Villager extends Player {
 		if (!choicesArray.length) {		// no human players have made a move yet
 			return Math.floor(availFish/numPlayers)
 		} else {
-			return choicsArray[Math.floor(Math.random() * choicesArray.length)]
+			return choicesArray[Math.floor(Math.random() * choicesArray.length)]
 		}
 	}
 }
+
+export default Villager
