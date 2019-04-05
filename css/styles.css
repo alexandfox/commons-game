@@ -86,19 +86,50 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-  height: 450px;
+  height: 530px;
 }
 
 .modalHeading {
   font-size: 18px;
   text-decoration: underline;
   text-transform: uppercase;
-  padding: 0 0 15px 0;
+  padding: 0px;
+  font-weight: 300;
+}
+
+.setupText {
+  padding: 0 0 40px 0;
+  font-size: 16px;
+}
+
+#selectVillageSize,
+#selectNumberPlayers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.playerName {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 10px 0;
+}
+
+.modal-footer {
+  height: 50px;
 }
 
 .custom-select {
   width: 200px;
   top: auto; bottom: 100%;
+}
+
+.userInput {
+  padding: 4px 0 0 0;
+}
+
+.nameInput {
+  width: 200px;
 }
 
 .playerAvatar {

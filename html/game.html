@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css"> -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="../css/styles.css">
@@ -19,17 +19,19 @@
 		<div id="player-modal" class="modal">
 			<div class="modal-content">
 				<div class="modal-body">
+					<h4 class="modalHeading">select village size: </h4>
 					<div id="selectVillageSize">
-						<h4 class="modalHeading">select village size: </h4>
+						<div class="setupText">how many fishers in the village?</div>
 						<select id="numberGroup" class="custom-select">
-							<option value="1">1</option>
+							<option value="2">select</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
 						</select>
 					</div>
+					<h4 class="modalHeading">number of players: </h4>
 					<div id="selectNumberPlayers">
-						<h4 class="modalHeading">number of players: </h4>
+						<div class="setupText">how many human players?</div>
 						<select id="numberHumanPlayers" class="custom-select">
 							<!-- <option value="1">1</option>
 							<option value="2">2</option>
@@ -37,8 +39,8 @@
 							<option value="4">4</option> -->
 						</select>
 					</div>
+					<h4 class="modalHeading">New Player</h4>
 					<div id="playerSetup">
-						<h4 class="modalHeading">New Player</h4>
 						<!-- <div class="playerName" id="player0-setup">
 							<label for="playerName" class="userInput">Player 1: </label>
 							<input type="text" class="nameInput" placeholder="Name" >
