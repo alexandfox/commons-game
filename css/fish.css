@@ -1,10 +1,7 @@
-svg#fish {
+/* svg#fish {
   top: 10em;
-}
-/* Fish Animation */
-svg.fish{
   overflow: visible;
-}
+} */
 
 /* @-webkit-keyframes swim
 {
@@ -20,16 +17,16 @@ svg.fish{
 	100% {margin-left: 100%;}
 } */
 
-.fish{  
-	margin-left: 40%;
-  margin-top: 12%;
-	position: fixed;	
-	animation: swim 20s;
+#fish{  
+	/* position: fixed; */
+  margin: 18em auto;
+  width: 240px;
+	/* animation: swim 20s;
 	-webkit-animation: swim 20s;
 	animation-iteration-count: infinite;
 	-webkit-animation-iteration-count: infinite;
 	animation-timing-function: linear;
-	-webkit-animation-timing-function: linear;
+	-webkit-animation-timing-function: linear; */
 }
 
 svg #fish1,
@@ -55,10 +52,10 @@ svg #fish16 {
   -ms-transform: translateY(-20px);
   -webkit-transform: translateY(20px);
   transform: translateY(-20px);
-  -moz-transform: translateX(-20px);
+  /* -moz-transform: translateX(-20px);
   -ms-transform: translateX(-20px);
   -webkit-transform: translateX(20px);
-  transform: translateX(-20px);
+  transform: translateX(-20px); */
 }
 
 svg #fish2{
@@ -135,36 +132,3 @@ svg #fish6{
     transform: translateY(-3px);
   }
 }
-
-
-/* water animation */
-#river {
-	position: relative;
-}
-
-#water {
-	margin: 0 0 0 40%;
-}
-
-#river-border {
-	background-image: url("../img/water.jpg");
-	width: 300px;
-	height: 650px;
-	animation: animate 15s linear infinite;
-}
-/* 
-@keyframes animate {
-	0% {
-		background-position: left 0px top 80px;
-
-	}
-	40% {
-		background-position: left 100px top -50px;
-	}
-	80% {
-		background-position: left 200px top -50px;
-	}
-	100% {
-		background-position: left 400px top -50px;
-	}
-} */
