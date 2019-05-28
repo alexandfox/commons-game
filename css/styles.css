@@ -175,17 +175,17 @@
 }
 
 
-#animation-container {
+#body-container {
   background-color: #BFDBFF;
 	height: 100%;
 	width: 100%;
-  position: absolute;
 }
 
 #pondStatsParent {
   display: flex;
   width: 100%;
   justify-content: center;
+  position: fixed;
 }
 
 #pondStats {
@@ -205,6 +205,20 @@ h3 {
 
 #dayTracker {
 
+}
+
+#river {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#game-fish {
+  width: 240px;
+  margin: 25em 0 0;
 }
 
 #all-players {
@@ -429,11 +443,20 @@ h3 {
 }
 
 /* tablets */
-@media screen and (min-width: 480px) and (max-width: 959px){
+@media screen and (min-width: 480px) {
 }
 
 /* desktop */
-@media screen and (min-width: 960px){ 
+@media screen and (min-width: 640px){ 
+
+#game-fish {
+  margin: 27% 0 0;
+}
+
+#leaderboard {
+  top: 2em;
+  right: 2em;
+}
 
 #main-menu {
   justify-content: center;
@@ -469,11 +492,6 @@ h3 {
   margin: 2em 0 0 0;
 }
 
-#leaderboard {
-  top: 2em;
-  right: 2em;
-}
-
 #hamburger-menu {
   top: 2em;
   left: 2em;
@@ -489,5 +507,4 @@ h3 {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
 }
-
 }
