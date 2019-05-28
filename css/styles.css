@@ -64,10 +64,10 @@
 .modal-content {
   background-color: #fefefe;
   margin: 8% auto; /* 15% from the top and centered */
-  padding: 20px;
+  padding: 0.5em;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  height: 530px;
+  width: 90%;
+  height: 90%;
 }
 
 .modal-header {
@@ -79,11 +79,22 @@
 }
 
 .modalHeading {
-  font-size: 18px;
-  text-decoration: underline;
+  font-size: 1em;
+  font-weight: 600;
   text-transform: uppercase;
   padding: 0px;
-  font-weight: 300;
+}
+
+#selectVillageSize,
+#selectNumberPlayers {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 3em 0;
+}
+
+.setupText {
+  font-size: 16px;
+  margin: 0 0 0.5em 0;
 }
 
 #rules-content {
@@ -96,17 +107,6 @@
 
 #yourGoal {
   padding: 0 0 10px;
-}
-
-.setupText {
-  padding: 0 0 40px 0;
-  font-size: 16px;
-}
-
-#selectVillageSize,
-#selectNumberPlayers {
-  display: flex;
-  justify-content: space-between;
 }
 
 .playerName {
@@ -163,8 +163,8 @@
 /* game environment */
 #hamburger-menu {
   position: absolute;
-  top: 35px;
-  left: 65px;
+  top: 1.2em;
+  left: 1.5em;
 }
 
 .hamburgerIcon {
@@ -177,12 +177,9 @@
 
 #animation-container {
   background-color: #BFDBFF;
-	height: 650px;
-	background-position: center;
-	background-size: cover;
+	height: 100%;
 	width: 100%;
-  /* margin: 10px auto; */
-  position: relative;
+  position: absolute;
 }
 
 #pondStatsParent {
@@ -192,10 +189,8 @@
 }
 
 #pondStats {
-  /* background-color: white; */
-  height: 100px;
   width: 200px;
-  margin: 20px 0 0 0;
+  margin: 1.2em 0 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,13 +211,10 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
-  height: 450px;
-  width: 200px;
+  height: 60%;
   position: absolute;
-  top: 80px;
-  left: 65px;
-  /* border: 2px solid black; */
+  left: 1.5em;
+  top: 17%;
 }
 
 .playerContainer {
@@ -243,7 +235,7 @@ h3 {
   display: flex;
   justify-content: space-around;
   position: absolute;
-  bottom: 30px;
+  bottom: 1.2em;
   width: 100%;
 }
 
@@ -255,15 +247,24 @@ h3 {
 }
 
 #player-turn-text, #turn-name-display {
-  font-size: 16px;
+  font-size: 0.8em;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
+}
+
+.btn {
+  border: 2px solid #FFE34A;
+  font-size: 0.8em;
+  padding: 5px;
+  font-weight: 600;
+  color:  black;
 }
 
 #turn-name-display {
   border: 2px solid #FFE34A;
   color:  black;
   padding: 5px;
+  font-weight: 600;
 }
 
 #player-turn-input {
@@ -276,16 +277,10 @@ h3 {
   /* margin: 0 0 50px; */
 }
 
-#listPlayers {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 50px;
-  top: 80px;
-}
-
 #leaderboard {
-  width: 250px;
+  position: absolute;
+  right: 1.5em;
+  top: 17%;
   display: flex;
 }
 
@@ -360,27 +355,9 @@ h3 {
   filter: grayscale(100%);
 }
 
-#player0 {
-  /* position: absolute;
-  top: 15%;
-  left: 10%; */
-}
-
-#player1 {
-  /* position: absolute;
-  bottom: 15%;
-  right: 10%; */
-}
-
-#player2 {
-  /* position: absolute;
-  top: 15%;
-  right: 10%; */
-}
-
 .avatarDisplay {
-  height: 95px;
-  margin: 15px auto;
+  height: 4.5em;
+  margin: 0;
 }
 
 /* .nameDisplay {
@@ -464,6 +441,53 @@ h3 {
 
 .mainMenuItem {
   padding: 0 2em 2em;
+}
+
+.modal-content {
+  margin: 8% auto;
+  padding: 20px;
+  border: 1px solid rgb(136, 136, 136);
+  width: 80%;
+}
+
+.modalHeading {
+  /* font-size: 18px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  padding: 0px;
+  font-weight: 300; */
+}
+
+#selectVillageSize,
+#selectNumberPlayers {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#pondStats {
+  margin: 2em 0 0 0;
+}
+
+#leaderboard {
+  top: 2em;
+  right: 2em;
+}
+
+#hamburger-menu {
+  top: 2em;
+  left: 2em;
+}
+
+#all-players {
+  left: 2em;
+  top: 20%;
+}
+
+#player-turn-text, #turn-name-display {
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
 
 }

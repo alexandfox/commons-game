@@ -210,14 +210,14 @@ export default class DOM {
   }
 
   updateEndOfDay(day, ydayFish, activePlayers) {
-    recapDay.textContent = day;
-    recapFish.textContent = ydayFish;
+    // recapDay.textContent = day;
+    // recapFish.textContent = ydayFish;
 
-    var namesPlayers = ""
-    activePlayers.forEach( player => {
-      namesPlayers += player.name + ", "
-    })
-    survivingPlayers.textContent = namesPlayers
+    // var namesPlayers = ""
+    // activePlayers.forEach( player => {
+    //   namesPlayers += player.name + ", "
+    // })
+    // survivingPlayers.textContent = namesPlayers
 
     // const turnPlayers = ""
     // turnArray.forEach( (player, index) => {
