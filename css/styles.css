@@ -565,10 +565,11 @@ a:hover{
 }
 
 .modal-content {
-  margin: 8% auto;
+  margin: 7% auto;
   padding: 20px;
   border: 1px solid rgb(136, 136, 136);
   width: 80%;
+  height: 77%;
 }
 
 .modalHeading {
