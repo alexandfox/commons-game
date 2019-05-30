@@ -18,6 +18,8 @@ const menuIntroClick = document.getElementById("menu-intro")
 const introModal = document.getElementById("intro-modal")
 const introClose = document.getElementById("intro-close")
 
+const gameNav = document.getElementById("game-nav")
+
 // setup
 const selectHumanPlayers = document.getElementById("numberHumanPlayers");
 const selectNumberGroup = document.getElementById("numberGroup")
@@ -56,21 +58,21 @@ const playerSetupDiv = document.getElementById("playerSetup")
 // }
 
 //show game Rules modal
-hamburgerIcon.onclick = function(event) {
-	console.log("click!")
-	rulesModal.setAttribute("class", "modal")
-	rulesModal.style.display = "block";
+// hamburgerIcon.onclick = function(event) {
+// 	console.log("click!")
+// 	rulesModal.setAttribute("class", "modal")
+// 	rulesModal.style.display = "block";
 
-	window.onclick = function(event) {
-		if (event.target == rulesModal) {
-			rulesModal.style.display = "none";
-		}
-	}
+// 	window.onclick = function(event) {
+// 		if (event.target == rulesModal) {
+// 			rulesModal.style.display = "none";
+// 		}
+// 	}
 
-	rulesModalExit.onclick = function(event) {
-		rulesModal.style.display = "none";
-	}
-}
+// 	rulesModalExit.onclick = function(event) {
+// 		rulesModal.style.display = "none";
+// 	}
+// }
 
 // Modal close on click
 //
@@ -116,6 +118,8 @@ finishSetup.onclick = function() {
 
 	const g = new Game(villageSize, numbHumanPlayers, playerNames);
 	g.setup();
+
+	gameNav.setAttribute("class", "")
 }
 
 function setHumanPlayers() {

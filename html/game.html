@@ -98,12 +98,26 @@
 			</div>
 	</div>
 	<div id="animation-container">
-		<div id="hamburger-menu" data-toggle="modal" data-target="#rules-modal">
+		<nav role="navigation" id="game-nav" class="hidden">
+		<div id="menuToggle">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<span></span>
+			<ul id="menu">
+				<li class="hamburgerItem" id="menu-home"><a href="../index.html">Home</a></li>
+				<li class="hamburgerItem" id="menu-intro"><a href="./intro.html">Intro</a></li>
+				<li class="hamburgerItem" id="menu-game"><a href="./game.html">Game</a></li>
+				<li class="hamburgerItem" id="menu-resources"><a href="./resources.html">Resources</a></li>
+			</ul>
+		</div>
+		</nav>
+		<!-- <div id="hamburger-menu" data-toggle="modal" data-target="#rules-modal">
 			<a href="#rules-modal" rel="modal:open"></a>
 			<div class="hamburgerIcon"></div>
 			<div class="hamburgerIcon"></div>
 			<div class="hamburgerIcon"></div>
-		</div>
+		</div> -->
 		<div id="pondStatsParent">
 			<div id="pondStats">
 				<h3>Day: <span id="dayTracker"></span></h3>
