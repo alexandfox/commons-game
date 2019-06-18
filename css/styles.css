@@ -190,7 +190,7 @@
 
 #pondStats {
   width: 200px;
-  margin: 1.2em 0 0 0;
+  margin: 1em 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -441,7 +441,7 @@ a:hover{
 
 #menuToggle {
   display: block;
-  position: relative;
+  position: fixed;
   top: 1.2em;
   left: 1.5em;
   z-index: 1;
@@ -556,6 +556,14 @@ a:hover{
   right: 2em;
 }
 
+#pondStats {
+  margin: 1.8em 0 0 0;
+}
+
+#menuToggle {
+  top: 2em;
+}
+
 #main-menu {
   justify-content: center;
 }
@@ -585,10 +593,6 @@ a:hover{
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-}
-
-#pondStats {
-  margin: 2em 0 0 0;
 }
 
 #hamburger-menu {
